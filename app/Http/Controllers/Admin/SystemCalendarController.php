@@ -6,13 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreReservacionsRequest;
 use Carbon\Carbon;
 use DB;
+use Auth;
 
 class SystemCalendarController extends Controller
 {
     public function index() 
     {
 
+        $userId = Auth::id();
 
+        $ub_default= DB::connection('odbc')->selectOne("SELECT a.id, a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN users b ON a.id = b.ubicacion WHERE b.id = ".$userId." ");
 
        $ubs = DB::connection('odbc')->select("SELECT a.id, a.nombre, a.ciudad, a.estado FROM ubicaciones a ");
 
@@ -43,7 +46,7 @@ class SystemCalendarController extends Controller
         } 
 
 
-       return view('admin.calendar')->with('events', $events)->with('ubs', $ubs)->with('rooms', $rooms);
+       return view('admin.calendar')->with('events', $events)->with('ubs', $ubs)->with('rooms', $rooms)->with('ub_default', $ub_default);
     }
 
 }
