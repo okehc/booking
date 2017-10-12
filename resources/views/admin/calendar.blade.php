@@ -5,14 +5,7 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css'/>
 
     <h3 class="page-title">Calendario</h3>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            @lang('quickadmin.qa_create')
-        </div>
-        
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-xs-12 form-group">
+
                     {!! Form::label('ubicacion', trans('quickadmin.reservacion.fields.ubicacion').'', ['class' => 'control-label']) !!}
                     <select name="ubicacion" id="ubicacion">
                         <option value="{{ $ub_default->id }}" SELECTED>{{ $ub_default->nombre}} - {{ $ub_default->ciudad}} - {{ $ub_default->estado}}</option>
@@ -21,9 +14,7 @@
                             <option value="{{ $ub->id }}">{{ $ub->nombre}} - {{ $ub->ciudad}} - {{ $ub->estado}}</option>
                         @endforeach
                     </select>
-                </div>
-            
-                <div class="col-xs-12 form-group">
+
                     {!! Form::label('sala_de_juntas', trans('quickadmin.reservacion.fields.sala-de-juntas').'*', ['class' => 'control-label']) !!}
 
                     @foreach($ubs as $ub)
@@ -33,10 +24,6 @@
                         @endforeach
                     </select>
                     @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div id='calendar'></div>
 
