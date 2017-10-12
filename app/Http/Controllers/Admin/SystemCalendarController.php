@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreReservacionsRequest;
 use Carbon\Carbon;
+use DB;
 
 class SystemCalendarController extends Controller
 {
@@ -42,7 +43,7 @@ class SystemCalendarController extends Controller
         } 
 
 
-       return view('admin.calendar')->('events', $events)->with('ubs', $ubs)->with('rooms', $rooms)
+       return view('admin.calendar')->('events', $events)->with('ubs', $ubs)->with('rooms', $rooms);
     }
 
 }
