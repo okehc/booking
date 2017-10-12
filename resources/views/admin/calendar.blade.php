@@ -43,7 +43,8 @@
         $('#' + x).show(); 
         $('#ubicacion').change(function(){
             $('.options').hide();
-            $('#' + $(this).val()).show();           
+            $('#' + $(this).val()).show();
+        });
     });
 
     </script>
@@ -124,7 +125,6 @@
                 });
             }
         });
-
     });
     </script>
 @endsection
