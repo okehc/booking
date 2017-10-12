@@ -10,6 +10,17 @@ class SystemCalendarController extends Controller
 {
     public function index() 
     {
+
+
+
+       $ubs = DB::connection('odbc')->select("SELECT a.id, a.nombre, a.ciudad, a.estado FROM ubicaciones a ");
+
+        foreach ($ubs as $ub ) {
+            $rooms[$ub->id] = DB::connection('odbc')->select("SELECT a.id, a.id_ubicacion, a.nombre_seccion FROM seccions a WHERE a.id_ubicacion = ".$ub->id." "); 
+        }
+
+
+
         $events = []; 
 
         foreach (\App\Reservacion::all() as $reservacion) { 
@@ -31,7 +42,7 @@ class SystemCalendarController extends Controller
         } 
 
 
-       return view('admin.calendar' , compact('events')); 
+       return view('admin.calendar')->('events', $events)->with('ubs', $ubs)->with('rooms', $rooms)
     }
 
 }
