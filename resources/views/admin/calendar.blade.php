@@ -43,19 +43,7 @@
         $('#' + x).show(); 
         $('#ubicacion').change(function(){
             $('.options').hide();
-            $('#' + $(this).val()).show();
-            var events = {
-                url: "http://10.30.42.27/booking/public/admin/evento",
-                type: 'POST',
-                data: {
-                    ubicacion: $(this).val()
-                }
-            }
-
-            $('#calendar').fullCalendar( 'removeEventSource', events);
-            $('#calendar').fullCalendar( 'addEventSource', events);         
-            $('#calendar').fullCalendar( 'refetchEvents' );
-        }).change();
+            $('#' + $(this).val()).show();           
     });
 
     </script>
