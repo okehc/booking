@@ -44,11 +44,6 @@
         $('#ubicacion').change(function(){
             $('.options').hide();
             $('#' + $(this).val()).show();
-        });
-    });
-
-
-            $('#ubicacion').change( function(){
             var events = {
                 url: "http://10.30.42.27/booking/public/admin/evento",
                 type: 'POST',
@@ -61,6 +56,7 @@
             $('#calendar').fullCalendar( 'addEventSource', events);         
             $('#calendar').fullCalendar( 'refetchEvents' );
         }).change();
+    });
 
     </script>
 
