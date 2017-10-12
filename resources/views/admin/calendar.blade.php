@@ -38,6 +38,7 @@
    <script>
     $(function() { 
 
+        $('.options').hide();
         var x = document.getElementById("ubicacion").value;
         $('#' + x).show(); 
         $('#ubicacion').change(function(){
