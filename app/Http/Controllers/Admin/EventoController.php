@@ -16,6 +16,7 @@ class EventoController extends Controller
 
     	$ub = isset($_POST['ub']) ? $_POST['ub'] : '' ;
     	$userId = Auth::id();
+    	var_dump($ub);
 
     	if ( $ub == '' ) {
 
