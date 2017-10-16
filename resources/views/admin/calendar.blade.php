@@ -59,13 +59,12 @@
                 var BB = "http://10.30.42.27/booking/public/admin/calendar?ub="+$(this).val();
                 alert(BB);
                 var events = {
-                    url: BB,
+                    url: "http://10.30.42.27/booking/public/admin/calendar?ub="+$(this).val(),
                     type: 'POST',
                     data: {
                         ub: $(this).val()
                     }
                 }
-                alert(events);
 
             $('#calendar').fullCalendar( 'removeEventSource', events);
             $('#calendar').fullCalendar( 'addEventSource', events);         
