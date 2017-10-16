@@ -14,7 +14,7 @@ class EventoController extends Controller
     public function index()
     {
 
-    	$ub = isset($_POST['ub']);
+    	$ub = isset($_GET['ub']);
 
     if($ub == 0){
     	$userId = Auth::id();

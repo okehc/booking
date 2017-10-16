@@ -56,10 +56,10 @@
 
             $('#ubicacion').change( function(){
 
-                url = "http://10.30.42.27/booking/public/admin/calendar?ub="+$(this).val();
-                alert(url);
+                var BB = "http://10.30.42.27/booking/public/admin/calendar?ub="+$(this).val();
+                alert(BB);
                 var events = {
-                    url: "http://10.30.42.27/booking/public/admin/calendar",
+                    url: BB,
                     type: 'POST',
                     data: {
                         ub: $(this).val()
