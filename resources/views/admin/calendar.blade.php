@@ -2,6 +2,7 @@
 
 
 @section('content')
+
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css'/>
 
     <h3 class="page-title">Calendario</h3>
@@ -43,7 +44,20 @@
 
     <script>
 
+        $('#ubicacion').change( function(){
 
+            var events = {
+                url: "http://10.30.42.27/booking/public/admin/evento",
+                type: 'POST',
+                data: {
+                    id_ub: $(this).val()
+                }
+            }
+
+            $('#calendar').fullCalendar( 'removeEventSource', events);
+            $('#calendar').fullCalendar( 'addEventSource', events);         
+            $('#calendar').fullCalendar( 'refetchEvents' );
+        }).change();
 
 
 
@@ -53,17 +67,8 @@
             var d = date.getDate();
             var m = date.getMonth();
             var y = date.getFullYear(); 
-
-
-            $('#searchButton').click(function() {
-
-                var ubicacion = $('#ubicacion').val();
-                window.location = "http://10.30.42.27/booking/public/admin/calendar?ub="+ubicacion;
-
-            });
-
-
-            
+            var
+           
 
             var calendar = $('#calendar').fullCalendar({
                 editable: true, 
