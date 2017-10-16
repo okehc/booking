@@ -6,7 +6,7 @@
 
     <?php $ub = $_GET['ub']; 
       echo $ub_id; ?> 
-    <input type="text" id="ub_id" class="ub_id" values="<?php echo $ub_id; ?> ">
+    <input type="text" id="ub_id" class="ub_id" value="<?php echo $ub_id; ?> ">
     <h3 class="page-title">Calendario</h3>
 
                     {!! Form::label('ubicacion', trans('quickadmin.reservacion.fields.ubicacion').'', ['class' => 'control-label']) !!}
