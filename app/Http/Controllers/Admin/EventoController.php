@@ -14,7 +14,7 @@ class EventoController extends Controller
     public function index()
     {
 
-    	$ub = $_POST['ub'];
+    	$ub = $_GET['ub'];
 
     	$userId = Auth::id();
 		$reservacions= DB::connection('odbc')->select("SELECT 

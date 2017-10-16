@@ -48,7 +48,7 @@
 
       alert($(this).val());
         var events = {
-            url: "http://10.30.42.27/booking/public/admin/calendar",
+            url: "http://10.30.42.27/booking/public/admin/calendar?ub="+ub,
             type: 'POST',
             data: {
                 ub: '0'
