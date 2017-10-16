@@ -54,21 +54,22 @@
             var m = date.getMonth();
             var y = date.getFullYear(); 
 
-         $('#ubicacion').change( function(){
+            $('#ubicacion').change( function(){
 
-      alert($(this).val());
-        var events = {
-            url: "http://10.30.42.27/booking/public/admin/calendar",
-            type: 'POST',
-            data: {
-                ub: $(this).val()
-            }
-        }
+                url = "http://10.30.42.27/booking/public/admin/calendar?ub="+$(this).val();
+                alert(url);
+                var events = {
+                    url: "http://10.30.42.27/booking/public/admin/calendar",
+                    type: 'POST',
+                    data: {
+                        ub: $(this).val()
+                    }
+                }
 
-        $('#calendar').fullCalendar( 'removeEventSource', events);
-        $('#calendar').fullCalendar( 'addEventSource', events);         
-        $('#calendar').fullCalendar( 'refetchEvents' );
-    }).change();
+            $('#calendar').fullCalendar( 'removeEventSource', events);
+            $('#calendar').fullCalendar( 'addEventSource', events);         
+            $('#calendar').fullCalendar( 'refetchEvents' );
+        }).change();
 
             var calendar = $('#calendar').fullCalendar({
                 editable: true, 
