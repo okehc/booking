@@ -95,7 +95,7 @@
                     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");                    
 
 
-                    window.location = "http://10.30.42.27/booking/public/admin/reservacions/create?start=";
+                    window.location = "http://google.com";
 
                 },
                 editable: true,
