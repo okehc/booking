@@ -4,8 +4,8 @@
 @section('content')
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css'/>
 
-    <?php $ub = $_GET['ub']; ?> 
-    <input type="hidden" id="ub_id" class="ub_id" value="<?php echo $ub_id; ?> ">
+    <?php $ub = $_GET['ub']; ?>
+    <input type="hidden" id="ub" class="ub" values="<?php echo $ub; ?>">
     <h3 class="page-title">Calendario</h3>
 
                     {!! Form::label('ubicacion', trans('quickadmin.reservacion.fields.ubicacion').'', ['class' => 'control-label']) !!}
@@ -15,7 +15,6 @@
                         @foreach($ubs as $ub)
                             <option value="{{ $ub->id }}">{{ $ub->nombre}} - {{ $ub->ciudad}} - {{ $ub->estado}}</option>
                         @endforeach
-                        <option value="0">Todas</option>
                     </select>
                     <input type='button' value='Buscar' id='searchButton' class='btn btn-success'>
 
@@ -66,11 +65,8 @@
             });
 
 
-            var id = $('#ub_id').val();
+            
 
-            var full = 'http://10.30.42.27/booking/public/admin/evento?ub='+id;
-
-              alert(full);
             var calendar = $('#calendar').fullCalendar({
                 editable: true, 
                 header: {    
@@ -85,7 +81,7 @@
                     //en la propiedad url de events ponemos el enlace
                     //y listo eso es todo ya el plugin se encargara de acomodar los eventos
                     //segun la fecha.
-                    url:'http://10.30.42.27/booking/public/admin/evento?ub=0'
+                    url:'http://10.30.42.27/booking/public/admin/evento'
                 },
 
                 eventClick: function(calEvent, jsEvent, view) {
