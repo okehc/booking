@@ -69,8 +69,8 @@
 
                 var ubicacion = $('#ubicacion').val();
                 var sala      = $('.options').val();
-                alert(ubicacion);
-                alert(sala);
+//                alert(ubicacion);
+//                alert(sala);
                 //window.location = "http://10.30.42.27/booking/public/admin/calendar?ub="+ubicacion+"&sa="+sala;
 
             });
