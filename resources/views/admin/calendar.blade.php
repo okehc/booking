@@ -91,12 +91,12 @@
                 selectHelper: true,
                 select: function(start, end, allDay) {
 
-                     var title = prompt('Event Title:');
+                     alert(start);
                     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
                     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");                    
 
 
-                    window.location = "http://google.com";
+                    window.location.replace = "http://google.com";
 
                 },
                 editable: true,
