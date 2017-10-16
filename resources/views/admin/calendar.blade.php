@@ -24,6 +24,7 @@
                         @endforeach
                     </select>
                     @endforeach
+                    <input type='button' value='Buscar' id='searchButton' class='btn btn-success'>
 
     <div id='calendar'></div>
 
@@ -62,6 +63,19 @@
             var d = date.getDate();
             var m = date.getMonth();
             var y = date.getFullYear(); 
+
+
+            $('#searchButton').click(function() {
+
+                var ubicacion = $('#ubicacion').val();
+                var sala      = $('.options').val();
+                alert(ubicacion);
+                alert(sala);
+                //window.location = "http://10.30.42.27/booking/public/admin/calendar?ub="+ubicacion+"&sa="+sala;
+
+            });
+
+
             
 
             var calendar = $('#calendar').fullCalendar({
@@ -100,12 +114,9 @@
                 selectable: true,
                 selectHelper: true,
                 select: function(start, end, allDay) {
-
+                    var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
+                    var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
                     window.location = "http://10.30.42.27/booking/public/admin/reservacions/create?start="+start+"&end="+end;
-                    alert(start);
-                    alert(end);
-                    
-
                 },
                 editable: true,
                 selectable: true,
