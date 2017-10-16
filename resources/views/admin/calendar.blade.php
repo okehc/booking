@@ -91,6 +91,7 @@
                 selectHelper: true,
                 select: function(start, end, allDay) {
 
+                     var title = prompt('Event Title:');
                     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
                     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");                    
 
