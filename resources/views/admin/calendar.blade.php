@@ -4,9 +4,8 @@
 @section('content')
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css'/>
 
-    <?php $ub = $_GET['ub']; 
-      echo $ub_id; ?> 
-    <input type="text" id="ub_id" class="ub_id" value="<?php echo $ub_id; ?> ">
+    <?php $ub = $_GET['ub']; ?> 
+    <input type="hidden" id="ub_id" class="ub_id" value="<?php echo $ub_id; ?> ">
     <h3 class="page-title">Calendario</h3>
 
                     {!! Form::label('ubicacion', trans('quickadmin.reservacion.fields.ubicacion').'', ['class' => 'control-label']) !!}
@@ -68,7 +67,6 @@
 
 
             var id = $('#ub_id').val();
-              alert(id);
 
             var full = 'http://10.30.42.27/booking/public/admin/evento?ub='+id;
 
