@@ -108,6 +108,7 @@ return [
 	'qa_view' => 'Ver',
 	'qa_update' => 'Actualizar',
 	'qa_list' => 'Lista de Reservaciones',
+	'qa_list_old' => 'Lista de Reservaciones pasadas',
 	'qa_no_entries_in_table' => 'Sin valores en la tabla',
 	'qa_custom_controller_index' => 'Índice del controlador personalizado (index).',
 	'qa_logout' => 'Salir',

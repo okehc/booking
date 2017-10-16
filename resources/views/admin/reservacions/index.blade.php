@@ -36,7 +36,7 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            @lang('quickadmin.qa_list')<input type='button' value='Reservaciones Pasadas' id='old_resButton' class='btn btn-danger'>
+            @lang('quickadmin.qa_list')
         </div>
 
         <div class="panel-body table-responsive">
@@ -87,12 +87,13 @@
 
 
 
-<div class="panel panel-default" id="old_reservations">
+
+    <div class="panel panel-default" >
         <div class="panel-heading">
-            @lang('quickadmin.qa_list')
+            <input type='button' value='Reservaciones Pasadas' id='old_resButton' class='btn btn-danger'>
         </div>
 
-        <div class="panel-body table-responsive">
+        <div class="panel-body table-responsive" id="old_reservations">
             <table class="table table-bordered table-striped {{ count($reservacions) > 0 ? 'datatable' : '' }} ">
                 <thead>
                     <tr>
