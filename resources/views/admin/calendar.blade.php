@@ -4,8 +4,6 @@
 @section('content')
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css'/>
 
-    <?php $ub = $_GET['ub']; ?>
-    <input type="hidden" id="ub" class="ub" values="<?php echo $ub; ?>">
     <h3 class="page-title">Calendario</h3>
 
                     {!! Form::label('ubicacion', trans('quickadmin.reservacion.fields.ubicacion').'', ['class' => 'control-label']) !!}
@@ -16,6 +14,8 @@
                             <option value="{{ $ub->id }}">{{ $ub->nombre}} - {{ $ub->ciudad}} - {{ $ub->estado}}</option>
                         @endforeach
                     </select>
+
+ 
                     <input type='button' value='Buscar' id='searchButton' class='btn btn-success'>
 
     <div id='calendar'></div>
