@@ -67,7 +67,7 @@
             });
 
 
-            var id = document.getElementById("ub").value;
+            var id = $('#ub').val();
             var full = 'http://10.30.42.27/booking/public/admin/evento?ub='+id;
 
               alert(full);
