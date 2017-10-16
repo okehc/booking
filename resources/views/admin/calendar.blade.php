@@ -15,7 +15,15 @@
                         @endforeach
                     </select>
 
- 
+                    {!! Form::label('sala_de_juntas', trans('quickadmin.reservacion.fields.sala-de-juntas').'*', ['class' => 'control-label']) !!}
+
+                    @foreach($ubs as $ub)
+                    <select name="sala_de_juntas" id="{{ $ub->id }}" class="options"> 
+                        @foreach($rooms[$ub->id] as $room)
+                            <option value="{{ $room->id }}">{{ $room->nombre_seccion}}</option>
+                        @endforeach
+                    </select>
+                    @endforeach
                     <input type='button' value='Buscar' id='searchButton' class='btn btn-success'>
 
     <div id='calendar'></div>
@@ -60,6 +68,7 @@
             $('#searchButton').click(function() {
 
                 var ubicacion = $('#ubicacion').val();
+                var sala      = $('.options').val();
                 window.location = "http://10.30.42.27/booking/public/admin/calendar?ub="+ubicacion;
 
             });
