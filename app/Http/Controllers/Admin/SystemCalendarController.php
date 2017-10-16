@@ -14,7 +14,8 @@ class SystemCalendarController extends Controller
     {
 
 
-        $ub = isset($_GET['ub']);
+        $ub_id = $_GET['ub'];
+        var_dump($ub_id);
         $userId = Auth::id();
 
         $ub_default= DB::connection('odbc')->selectOne("SELECT a.id, a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN users b ON a.id = b.ubicacion WHERE b.id = ".$userId." ");
@@ -48,7 +49,7 @@ class SystemCalendarController extends Controller
         } 
 
 
-       return view('admin.calendar')->with('events', $events)->with('ubs', $ubs)->with('rooms', $rooms)->with('ub_default', $ub_default)->with('ub', $ub);
+       return view('admin.calendar')->with('events', $events)->with('ubs', $ubs)->with('rooms', $rooms)->with('ub_default', $ub_default)->with('ub_id', $ub_id);
     }
 
 }

@@ -4,8 +4,9 @@
 @section('content')
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css'/>
 
-    <?php $ub = $_GET['ub']; ?>
-    <input type="hidden" id="ub" class="ub" values="<?php echo $ub; ?>">
+    <?php $ub = $_GET['ub']; 
+    var_dump($ub_id);?>
+    <input type="hidden" id="ub" class="ub" values="<?php echo $ub_id; ?>">
     <h3 class="page-title">Calendario</h3>
 
                     {!! Form::label('ubicacion', trans('quickadmin.reservacion.fields.ubicacion').'', ['class' => 'control-label']) !!}
