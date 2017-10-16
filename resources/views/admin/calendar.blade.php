@@ -51,7 +51,7 @@
             url: "http://10.30.42.27/booking/public/admin/calendar",
             type: 'POST',
             data: {
-                ub: '0'
+                ub: $(this).val()
             }
         }
 
