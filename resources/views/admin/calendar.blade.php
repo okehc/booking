@@ -5,7 +5,7 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css'/>
 
     <?php $ub = $_GET['ub']; 
-    var_dump($ub_id);  echo $ub_id; ?> 
+      echo $ub_id; ?> 
     <input type="text" id="ub_id" class="ub_id" values="<?php echo $ub_id; ?> ">
     <h3 class="page-title">Calendario</h3>
 
