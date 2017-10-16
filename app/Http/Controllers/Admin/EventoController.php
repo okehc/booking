@@ -16,7 +16,7 @@ class EventoController extends Controller
     	$ub = $_GET['ub'];
     	var_dump($ub);
 
-    if($ub == 0){
+    if($ub != 0){
     	$userId = Auth::id();
 
 		$reservacions= DB::connection('odbc')->select("SELECT 
