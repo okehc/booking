@@ -2,7 +2,6 @@
 
 
 @section('content')
-
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css'/>
 
     <h3 class="page-title">Calendario</h3>
@@ -15,7 +14,6 @@
                             <option value="{{ $ub->id }}">{{ $ub->nombre}} - {{ $ub->ciudad}} - {{ $ub->estado}}</option>
                         @endforeach
                     </select>
-                    <input type='button' value='Buscar' id='searchButton' class='btn btn-success'>
 
     <div id='calendar'></div>
 
@@ -45,7 +43,21 @@
     <script>
 
 
+   $('#ubicacion').change( function(){
 
+      alert($(this).val());
+        var events = {
+            url: "http://10.30.42.27/booking/public/admin/calendar?ub=",
+            type: 'POST',
+            data: {
+                ub: $(this).val()
+            }
+        }
+
+        $('#calendar').fullCalendar( 'removeEventSource', events);
+        $('#calendar').fullCalendar( 'addEventSource', events);         
+        $('#calendar').fullCalendar( 'refetchEvents' );
+    }).change();
 
 
 
@@ -54,8 +66,17 @@
             var d = date.getDate();
             var m = date.getMonth();
             var y = date.getFullYear(); 
-            var
-           
+
+
+            $('#searchButton').click(function() {
+
+                var ubicacion = $('#ubicacion').val();
+                window.location = "http://10.30.42.27/booking/public/admin/calendar?ub="+ubicacion;
+
+            });
+
+
+            
 
             var calendar = $('#calendar').fullCalendar({
                 editable: true, 
