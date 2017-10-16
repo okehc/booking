@@ -80,6 +80,16 @@
                     //segun la fecha.
                     url:'http://10.30.42.27/booking/public/admin/evento'
                 },
+
+                eventClick: function(calEvent, jsEvent, view) {
+                    alert('Event: ' + calEvent.title);
+                    alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+                    alert('View: ' + view.name);
+
+                    // change the border color just for fun
+                    $(this).css('border-color', 'red');
+
+                },
                 eventRender: function(event, element, view) {
                     if (event.allDay === 'true') {
                         event.allDay = true;
@@ -93,7 +103,7 @@
 
                     alert(start);
                     alert(end);
-                    window.location.replace = "http://10.30.42.27/booking/public/admin/reservacions";
+                    window.location.replace = "http://10.30.42.27/booking/public/admin/reservacions/create";
 
                 },
                 editable: true,
@@ -110,19 +120,19 @@
                    });
                 },
 
-            eventResize: function(event) {      
-                var start = $.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm:ss");
-                var end = $.fullCalendar.formatDate(event.end, "yyyy-MM-dd HH:mm:ss");
-                $.ajax({
-                    url: 'update_events.php',
-                    data: 'title='+ event.title+'&start='+ start +'&end='+ end +'&id='+ event.id ,
-                    type: "POST",
-                    success: function(json) {
-                        alert("Updated Successfully");
-                    }
-                });
-            }
-        });
+                eventResize: function(event) {      
+                    var start = $.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm:ss");
+                    var end = $.fullCalendar.formatDate(event.end, "yyyy-MM-dd HH:mm:ss");
+                    $.ajax({
+                        url: 'update_events.php',
+                        data: 'title='+ event.title+'&start='+ start +'&end='+ end +'&id='+ event.id ,
+                        type: "POST",
+                        success: function(json) {
+                            alert("Updated Successfully");
+                        }
+                    });
+                }
+            });
     });
     </script>
 @endsection
