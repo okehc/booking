@@ -52,12 +52,13 @@ class ReservacionsController extends Controller
             $reservacions = Reservacion::onlyTrashed()->get();
         } else {
             #$reservacions = Reservacion::all();
-            $reservacions= DB::connection('odbc')->select("SELECT a.id, a.nombre_reunion, b.nombre as ubicacion, c.nombre_seccion as sala_de_juntas, a.fecha_inicio as hora_duracion, a.hora_inicio as minuto_duracion, a.tiempo_duracion as tiempo FROM reservaciones a JOIN ubicaciones b ON a.id_ubicacion = b.id JOIN seccions c ON a.id_seccion = c.id WHERE id_usuario = ".$userId." ORDER BY a.created_at DESC");
+            $reservacions= DB::connection('odbc')->select("SELECT a.id, a.nombre_reunion, b.nombre as ubicacion, c.nombre_seccion as sala_de_juntas, a.fecha_inicio as hora_duracion, a.hora_inicio as minuto_duracion, a.tiempo_duracion as tiempo FROM reservaciones a JOIN ubicaciones b ON a.id_ubicacion = b.id JOIN seccions c ON a.id_seccion = c.id WHERE id_usuario = ".$userId." AND a.fecha_inicio >= getdate() ORDER BY a.fecha_inicio DESC");
 
+             $old_reservacions= DB::connection('odbc')->select("SELECT a.id, a.nombre_reunion, b.nombre as ubicacion, c.nombre_seccion as sala_de_juntas, a.fecha_inicio as hora_duracion, a.hora_inicio as minuto_duracion, a.tiempo_duracion as tiempo FROM reservaciones a JOIN ubicaciones b ON a.id_ubicacion = b.id JOIN seccions c ON a.id_seccion = c.id WHERE id_usuario = ".$userId." AND a.fecha_inicio < getdate() ORDER BY a.fecha_inicio DESC");
          
         }
 
-        return view('admin.reservacions.index')->with('reservacions', $reservacions);
+        return view('admin.reservacions.index')->with('reservacions', $reservacions)->with('old_reservacions', $old_reservacions);
     }
 
     /**
