@@ -70,6 +70,7 @@
             var id = document.getElementById("ub").value;
             var full = 'http://10.30.42.27/booking/public/admin/evento?ub='+id;
 
+              alert(full);
             var calendar = $('#calendar').fullCalendar({
                 editable: true, 
                 header: {    

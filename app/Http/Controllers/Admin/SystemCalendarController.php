@@ -15,7 +15,6 @@ class SystemCalendarController extends Controller
 
 
         $ub_id = $_GET['ub'];
-        var_dump($ub_id);
         $userId = Auth::id();
 
         $ub_default= DB::connection('odbc')->selectOne("SELECT a.id, a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN users b ON a.id = b.ubicacion WHERE b.id = ".$userId." ");
