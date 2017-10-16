@@ -15,7 +15,7 @@ class EventoController extends Controller
     {
 
     	$ub = isset($_GET['ub']);
-var_dump($ub);
+
     if($ub == 0){
     	$userId = Auth::id();
 

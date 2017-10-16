@@ -85,7 +85,7 @@
                     //en la propiedad url de events ponemos el enlace
                     //y listo eso es todo ya el plugin se encargara de acomodar los eventos
                     //segun la fecha.
-                    url:full
+                    url:'http://10.30.42.27/booking/public/admin/evento?ub=0'
                 },
 
                 eventClick: function(calEvent, jsEvent, view) {
