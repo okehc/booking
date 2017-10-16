@@ -13,6 +13,7 @@
                         @foreach($ubs as $ub)
                             <option value="{{ $ub->id }}">{{ $ub->nombre}} - {{ $ub->ciudad}} - {{ $ub->estado}}</option>
                         @endforeach
+                          <option value="0">Todas</option>
                     </select>
 
     <div id='calendar'></div>
@@ -67,16 +68,7 @@
             var m = date.getMonth();
             var y = date.getFullYear(); 
 
-
-            $('#searchButton').click(function() {
-
-                var ubicacion = $('#ubicacion').val();
-                window.location = "http://10.30.42.27/booking/public/admin/calendar?ub="+ubicacion;
-
-            });
-
-
-            
+      
 
             var calendar = $('#calendar').fullCalendar({
                 editable: true, 

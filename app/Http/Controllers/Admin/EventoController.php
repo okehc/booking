@@ -14,7 +14,11 @@ class EventoController extends Controller
     public function index()
     {
 
+    	$ub = $_REQUEST['ub'];
+
     	$userId = Auth::id();
+
+    	if ($ub == 0) {
 		$reservacions= DB::connection('odbc')->select("SELECT 
 			a.id, 
 			a.nombre_reunion as title, 
@@ -27,7 +31,25 @@ class EventoController extends Controller
 			FROM reservaciones a  
 			JOIN users b ON a.id_usuario = b.id 
 			JOIN  seccions c ON a.id_seccion  = c.id");
- 	
+ 			} else {
+
+		$reservacions= DB::connection('odbc')->select("SELECT 
+			a.id, 
+			a.nombre_reunion as title, 
+			a.fecha_inicio as fecha, 
+			a.hora_inicio as time_start, 
+			a.tiempo_duracion as time_end, 
+			b.name, 
+			b.apellido_paterno,
+			c.nombre_seccion
+			FROM reservaciones a  
+			JOIN users b ON a.id_usuario = b.id 
+			JOIN  seccions c ON a.id_seccion  = c.id
+			where a.id_ubicacion = ".$ub." ");
+
+
+ 			}
+
 		foreach ($reservacions as $key ) {
 
 			$real_title = $key->nombre_seccion.", ".$key->name.", ".$key->apellido_paterno;
