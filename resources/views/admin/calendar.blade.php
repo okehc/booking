@@ -44,7 +44,17 @@
     <script>
 
 
-   $('#ubicacion').change( function(){
+
+
+
+
+        $(document).ready(function () {
+            var date = new Date();
+            var d = date.getDate();
+            var m = date.getMonth();
+            var y = date.getFullYear(); 
+
+         $('#ubicacion').change( function(){
 
       alert($(this).val());
         var events = {
@@ -59,16 +69,6 @@
         $('#calendar').fullCalendar( 'addEventSource', events);         
         $('#calendar').fullCalendar( 'refetchEvents' );
     }).change();
-
-
-
-        $(document).ready(function () {
-            var date = new Date();
-            var d = date.getDate();
-            var m = date.getMonth();
-            var y = date.getFullYear(); 
-
-      
 
             var calendar = $('#calendar').fullCalendar({
                 editable: true, 
