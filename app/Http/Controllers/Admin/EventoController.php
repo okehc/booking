@@ -14,9 +14,6 @@ class EventoController extends Controller
     public function index()
     {
 
-    	$ub = isset($_GET['ub']);
-
-    if($ub == 0){
     	$userId = Auth::id();
 
 		$reservacions= DB::connection('odbc')->select("SELECT 
@@ -47,9 +44,6 @@ class EventoController extends Controller
 		return json_encode($t);
         #return response()->json($data); //para luego retornarlo y estar listo para consumirlo
  
-    } else {
-    	return true;
-    }
 
   }
 }
