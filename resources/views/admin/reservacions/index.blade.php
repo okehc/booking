@@ -4,6 +4,7 @@
 @section('javascript')
 <script>
         
+    $("#old_reservations").hide();
     $(document).ready(function() {
         
         
