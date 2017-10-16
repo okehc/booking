@@ -93,10 +93,11 @@
 
                      alert(start);
                     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-                    var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");                    
+                    var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+                    alert(end);
 
 
-                    window.location.replace = "http://google.com";
+                    window.location.replace = "http://10.30.42.27/booking/public/admin/reservacions";
 
                 },
                 editable: true,
