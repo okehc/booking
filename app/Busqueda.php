@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 */
 class Busqueda extends Model
 {
-    protected $fillable = ['fehca', 'ubicacion', 'no_personas'];
+    protected $fillable = ['fehca', 'ubicacion'];
     
     
 }
