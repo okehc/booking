@@ -100,8 +100,8 @@
                 selectable: true,
                 selectHelper: true,
                 select: function(start, end, allDay) {
-                    var start = $.fullCalendar.formatDate(start, "YYYY-MM-DD");
-                    var end = $.fullCalendar.formatDate(end, "YYYY-MM-DD");
+                    var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
+                    var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
                     alert(start);
                     //window.location = "http://10.30.42.27/booking/public/admin/reservacions/create?start="+start+"&end="+end+"&ub="+ub_id;
                 },
