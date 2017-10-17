@@ -173,19 +173,17 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('ubicacion', trans('quickadmin.reservacion.fields.ubicacion').'', ['class' => 'control-label']) !!}
-
                     <select name="ubicacion" id="ubicacion">
-                    <option value="<?php echo $ub_default->id; ?>" SELECTED>".$ub_default->nombre." - ".$ub_default->ciudad." - ".$ub_default->estado."</option>
-                    <?php if ( $ub_from_calendar != 0 ){
-                        foreach ($ubs as $ub) {
-                            if ( $ub->id == $ub_from_calendar ){
-                                echo "<option value='1' SELECTED>".$ub->nombre." - ".$ub->ciudad." - ".$ub->estado."</option>";
-                            }
-                        }
-                    } else {
-                        echo "<option value=".$ub_default->id." SELECTED>".$ub_default->nombre." - ".$ub_default->ciudad." - ".$ub_default->estado."</option>";
-                    }
-                    ?>
+
+                    <?php if ($ub_from_calendar == 0 ) { ?>
+
+                        <option value="{{ $ub_default->id }}" SELECTED>{{ $ub_default->nombre}} - {{ $ub_default->ciudad}} - {{ $ub_default->estado}}</option>
+
+                    <?php } else {  ?>
+
+                        <option value="{{ $ub_from_calendar }}" SELECTED>{{ $ub_default->nombre}} - {{ $ub_default->ciudad}} - {{ $ub_default->estado}}</option>
+                            
+                    <?php } ?>
 
                         @foreach($ubs as $ub)
                             <option value="{{ $ub->id }}">{{ $ub->nombre}} - {{ $ub->ciudad}} - {{ $ub->estado}}</option>
@@ -237,14 +235,8 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('hora_duracion', trans('quickadmin.reservacion.fields.hora-duracion').'*', ['class' => 'control-label']) !!}
                     
-                    <?php if ($sdate == 0) { 
-                        echo "<input type='text' class='form-control datepicker' name='date'>";
-                    } else {
 
-                        $sdate = date_format($sdate, 'Y-m-d');
-                        echo "<input type='text' class='form-control datepicker' name='date' value='".$sdate."'>";
-                    }
-                    ?>
+                    <input type="text" class="form-control datepicker" name="date">
                     
                     {!! Form::label('hora_inicio', trans('quickadmin.reservacion.fields.hora-inicio').'*', ['class' => 'control-label']) !!}
                     </br>
