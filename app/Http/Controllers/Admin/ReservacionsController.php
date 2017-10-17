@@ -92,7 +92,7 @@ class ReservacionsController extends Controller
             $room_items[$item->id_seccions] = DB::connection('odbc')->select("SELECT a.item_nombre, a.item_descripcion FROM items a WHERE a.id = ".$item->id_item." "); 
         }
 
-        return view('admin.reservacions.create')->with('ub_default', $ub_default)->with('ubs', $ubs)->with('rooms', $rooms)->with('room_items', $room_items)->with('items', $items)->with('ub_from_calendar', $ub)->with('sdate', $date_ini)->with('edate', $date_fin);
+        return view('admin.reservacions.create')->with('ub_default', $ub_default)->with('ubs', $ubs)->with('rooms', $rooms)->with('room_items', $room_items)->with('items', $items)->with('ub_from_calendar', $ub);
     }
 
 
