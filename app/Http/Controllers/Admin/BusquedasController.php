@@ -54,6 +54,8 @@ class BusquedasController extends Controller
             return abort(401);
         }
         $date = $request->date;
+        $dd=explode('/', $date);
+        $real_date = $date[2]."/".$date[1]."/".$date[0];
         $no_personas = isset($request->no_personas) ? $request->no_personas : 0;
         $ubicacion = $request->ubicacion;
 
@@ -67,7 +69,7 @@ class BusquedasController extends Controller
                 SELECT a.* FROM seccions a 
                 WHERE a.id NOT IN (SELECT b.id_seccion 
                                    FROM reservaciones b 
-                                   WHERE b.fecha_inicio ='".$date."') ");
+                                   WHERE b.fecha_inicio ='".$real_date."') ");
         }
 
         return view('admin.busquedas.show')->with('libres', $libres);
