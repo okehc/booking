@@ -228,13 +228,7 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('hora_duracion', trans('quickadmin.reservacion.fields.hora-duracion').'*', ['class' => 'control-label']) !!}
                     
-                    <?php  
-                    var_dump($sdate);
-                    var_dump($edate);
-                    ?>
-
-
-                    
+<?php var_dump($sdate); ?>                    
                     
                     {!! Form::label('hora_inicio', trans('quickadmin.reservacion.fields.hora-inicio').'*', ['class' => 'control-label']) !!}
                     </br>
