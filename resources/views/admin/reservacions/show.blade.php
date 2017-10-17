@@ -82,7 +82,12 @@
 
             <p>&nbsp;</p>
 
-            <?php if (!isset($minuta->content)) { ?>
+            <?php 
+
+            $date_now = date("Y-m-d");
+
+
+            if ( $date_now < $reservacion->fDate ) { ?>
                 {!! Form::open(['action' => 'Admin\ReservacionsController@minuta']) !!}
                 <div class="box-body">
                     <div class="form-group">
@@ -90,7 +95,7 @@
                     </div>
                 <div class="form-group">
                     <input type="hidden" name="nombre_de_reunion" value="{{ $reservacion->id }}">
-                    <textarea class="form-control minuta" id="minuta" name="minuta"></textarea>
+                    <textarea class="form-control minuta" id="minuta" name="minuta">{!! $minuta->content !!}</textarea>
                 </div>
             
 
