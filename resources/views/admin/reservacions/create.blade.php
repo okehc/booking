@@ -150,7 +150,6 @@
 
 @section('content')
 
-<?php var_dump($date_ini);?>
     <h3 class="page-title">@lang('quickadmin.reservacion.title')</h3>
     {!! Form::open(['method' => 'POST', 'route' => ['admin.reservacions.store']]) !!}
 
@@ -176,7 +175,15 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('ubicacion', trans('quickadmin.reservacion.fields.ubicacion').'', ['class' => 'control-label']) !!}
                     <select name="ubicacion" id="ubicacion">
+
+                    <?php if ($ub_from_calendar == 0) { ?>
+
                         <option value="{{ $ub_default->id }}" SELECTED>{{ $ub_default->nombre}} - {{ $ub_default->ciudad}} - {{ $ub_default->estado}}</option>
+                    <?php } else { ?>
+                        <option value="{{ $ub_from_calendar }}" SELECTED>{{ $ub_default->nombre}} - {{ $ub_default->ciudad}} - {{ $ub_default->estado}}</option>
+                    <?php } ?>
+
+
 
                         @foreach($ubs as $ub)
                             <option value="{{ $ub->id }}">{{ $ub->nombre}} - {{ $ub->ciudad}} - {{ $ub->estado}}</option>
@@ -228,8 +235,11 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('hora_duracion', trans('quickadmin.reservacion.fields.hora-duracion').'*', ['class' => 'control-label']) !!}
                     
-
-                    <input type="text" class="form-control datepicker" name="date">
+                    <?php if ($date_ini == '') { ?>
+                        <input type="text" class="form-control datepicker" name="date">
+                    <?php } else { ?>
+                        <input type="text" class="form-control datepicker" name="date" value="<?php echo $date_ini; ?>">
+                    <?php } ?>
                     
                     {!! Form::label('hora_inicio', trans('quickadmin.reservacion.fields.hora-inicio').'*', ['class' => 'control-label']) !!}
                     </br>
