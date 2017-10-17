@@ -30,12 +30,7 @@
 
 @section('content')
     <h3 class="page-title">@lang('quickadmin.busquedas.title')</h3>
-    @can('busqueda_create')
-    <p>
-        <a href="{{ route('admin.busquedas.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
-        
-    </p>
-    @endcan
+Z
 
     
 
@@ -45,7 +40,7 @@
         </div>
 
         <div class="panel-body table-responsive">
-            <table class="table table-bordered table-striped {{ count($busquedas) > 0 ? 'datatable' : '' }} ">
+            <table class="table table-bordered table-striped ">
                 <tbody>
                     <tr>
                         <td>@lang('quickadmin.busquedas.fields.fehca')</td>
