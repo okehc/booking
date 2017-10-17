@@ -244,10 +244,10 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('hora_duracion', trans('quickadmin.reservacion.fields.hora-duracion').'*', ['class' => 'control-label']) !!}
                     
-                    <?php if ($date_ini ='') { ?>
+                    <?php if ($date_ini == '') { ?>
                         <input type="text" class="form-control datepicker" name="date">
                     <?php } else { ?>
-                        <input type="text" class="form-control datepicker" name="date" value="<?php echo $date_ini; ?>">
+                        <input type="text" class="form-control datepicker" name="date" value="<?php echo $dd[0]; ?>">
                     <?php } ?>
 
                     
@@ -256,6 +256,10 @@
 
                     <select name="hora_inicio" class="form-control"> 
                     <?php
+                        if ($dd[1] != ''){
+                            echo "<option value='".$dd[1]."' SELECTED>".$dd[1]."</option>";
+                        }
+
                         $start = "06:00";
                         $end = "22:00";
                     
