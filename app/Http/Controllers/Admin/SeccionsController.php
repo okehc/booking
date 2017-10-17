@@ -90,7 +90,7 @@ class SeccionsController extends Controller
                     VALUES ( '".$request->nombre_seccion."', ".$request['id_atributos'].", getdate(), '".$request->c_personas."' )";
           $insert_seccion= DB::connection('odbc')->insert($query);
 
-          $select_seccion = DB::connection('odbc')->selectOne(' SELECT id from seccions WHERE nombre_seccion = "'.$request->nombre_seccion.'" AND c_personas = '.$request->c_personas.' ');
+          $select_seccion = DB::connection('odbc')->selectOne("SELECT id from seccions WHERE nombre_seccion = '".$request->nombre_seccion."' AND c_personas = ".$request->c_personas." ");
 
 
 
@@ -98,8 +98,8 @@ class SeccionsController extends Controller
             foreach ($request['item'] as $item) {
               
                 $inserted_items= DB::connection('odbc')->insert(
-                                  'INSERT INTO items_seccions ( id_seccions, id_item, created_at ) 
-                                  VALUES ( "'.$select_seccion->id.'", "'.$item.'", getdate()  )');        
+                                  "INSERT INTO items_seccions ( id_seccions, id_item, created_at ) 
+                                  VALUES ( '".$select_seccion->id."', '".$item."', getdate()  )");        
             }
                
           } catch (\Exception $inserted_items) {
