@@ -23,6 +23,10 @@
                             <td field-key='nombre_seccion'>{{ $seccion->nombre_seccion }}</td>
                         </tr>
                         <tr>
+                            <th>@lang('quickadmin.seccion.fields.ctd-personas')</th>
+                            <td field-key='c_personas'>{{ $seccion->c_personas }}</td>
+                        </tr>                        
+                        <tr>
                             <th>@lang('quickadmin.seccion.fields.id-atributos')</th>
                             <td field-key='id_atributos'>
                                 <ul>
