@@ -87,7 +87,7 @@ class SeccionsController extends Controller
 
           # insert and get last id 
           $query = "INSERT INTO seccions ( id_ubicacion, nombre_seccion, id_atributos, created_at, c_personas ) 
-                    VALUES ( ".$request->id_ubicacion." '".$request->nombre_seccion."', ".$request['id_atributos'].", getdate(), '".$request->c_personas."' )";
+                    VALUES ( ".$request->id_ubicacion.", '".$request->nombre_seccion."', ".$request['id_atributos'].", getdate(), '".$request->c_personas."' )";
           $insert_seccion= DB::connection('odbc')->insert($query);
 
           $select_seccion = DB::connection('odbc')->selectOne("SELECT id from seccions WHERE nombre_seccion = '".$request->nombre_seccion."' AND c_personas = ".$request->c_personas." AND id_ubicacion = ".$request->id_ubicacion." ");
@@ -122,7 +122,7 @@ class SeccionsController extends Controller
             return abort(401);
         }
         $seccion = Seccion::findOrFail($id);
-        $location= DB::connection('odbc')->selectOne('SELECT a.id, a.nombre, a.ciudad, a.estado b.c_personas FROM ubicaciones a JOIN seccions b ON a.id = b.id_ubicacion  WHERE b.id = '.$id.' ');
+        $location= DB::connection('odbc')->selectOne('SELECT a.id, a.nombre, a.ciudad, a.estado, b.c_personas FROM ubicaciones a JOIN seccions b ON a.id = b.id_ubicacion  WHERE b.id = '.$id.' ');
         $ubicaciones= DB::connection('odbc')->select('SELECT id, nombre, ciudad, estado FROM ubicaciones') ;                
         $selected_items= DB::connection('odbc')->select('SELECT a.id_item, b.item_nombre, b.item_descripcion FROM items_seccions a 
                                                             JOIN items b ON a.id_item = b.id WHERE a.id_seccions =  '.$id.' ');
