@@ -74,7 +74,7 @@
                     <tr>
                         <td>@lang('quickadmin.busquedas.fields.no-personas')</td>
                         <td>
-                            {!! Form::text('no_personas', old('no_personas'), ['class' => 'form-control', 'placeholder' => 'nulo o 0 - busca todas las salas', 'required' => '']) !!}
+                            <input type="text" name="no_personas" class="form-control" placeholder="nulo o 0 - busca todas las salas" value="0">
 
                         </td>
                     </tr>
