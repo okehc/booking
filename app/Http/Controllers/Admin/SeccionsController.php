@@ -86,8 +86,9 @@ class SeccionsController extends Controller
           $request['id_atributos'] = count($request['item']);          
 
           # insert and get last id 
-          $query = 'INSERT INTO seccions ( nombre_seccion, id_atributos, created_at, c_personas ) 
-                    VALUES ( "'.$request->nombre_seccion.'", '.$request['id_atributos'].', getdate(), '.$request->c_personas.' )';
+          $query = "INSERT INTO seccions ( nombre_seccion, id_atributos, created_at, c_personas ) 
+                    VALUES ( '".$request->nombre_seccion."', ".$request['id_atributos'].", getdate(), '".$request->c_personas."' )";
+                    var_dump($query);
           #$insert_seccion= DB::connection('odbc')->insert($query);
 
           #$select_seccion = DB::connection('odbc')->selectOne(' SELECT id from seccions WHERE nombre_seccion = "'.$request->nombre_seccion.'" AND c_personas = '.$request->c_personas.' ');
