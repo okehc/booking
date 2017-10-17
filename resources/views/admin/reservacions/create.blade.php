@@ -152,7 +152,7 @@
 
 <?php 
     if ($date_ini != '') {
-        $dd = explode('T', $date_ini);;
+        $dd = explode('T', $date_ini);
     }
 ?>
     <h3 class="page-title">@lang('quickadmin.reservacion.title')</h3>
@@ -258,7 +258,6 @@
                     <select name="hora_inicio" class="form-control"> 
                     <?php
                         if (isset($dd[1])){
-                            var_dump($date_ini);
                             echo "<option value='".$dd[1]."' SELECTED>".$dd[1]."</option>";
                         }
 
