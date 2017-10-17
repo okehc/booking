@@ -175,10 +175,10 @@
                     {!! Form::label('ubicacion', trans('quickadmin.reservacion.fields.ubicacion').'', ['class' => 'control-label']) !!}
 
                     <select name="ubicacion" id="ubicacion">
-                    <option value=".$ub_default->id." SELECTED>".$ub_default->nombre." - ".$ub_default->ciudad." - ".$ub_default->estado."</option>
+                    <option value="<?php echo $ub_default->id; ?>" SELECTED>".$ub_default->nombre." - ".$ub_default->ciudad." - ".$ub_default->estado."</option>
                     <?php if ( $ub_from_calendar != 0 ){
                         foreach ($ubs as $ub) {
-                            if ( $ub->id == 1 ){
+                            if ( $ub->id == $ub_from_calendar ){
                                 echo "<option value='1' SELECTED>".$ub->nombre." - ".$ub->ciudad." - ".$ub->estado."</option>";
                             }
                         }
