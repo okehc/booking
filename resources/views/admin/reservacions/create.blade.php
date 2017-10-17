@@ -228,7 +228,18 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('hora_duracion', trans('quickadmin.reservacion.fields.hora-duracion').'*', ['class' => 'control-label']) !!}
                     
-<?php var_dump($sdate); ?>                    
+                    <?php if ( $date_ini == 0 ) { ?>
+                        <input type="text" class="form-control datepicker" name="date">
+                    <?php } else { 
+
+
+                        $dd = date_format($date_ini, 'Y-m-d');
+                        ?>
+                        <input type="text" class="form-control datepicker" name="date" value="<?php echo $dd; ?>">
+                    <?php } ?>
+
+
+                    
                     
                     {!! Form::label('hora_inicio', trans('quickadmin.reservacion.fields.hora-inicio').'*', ['class' => 'control-label']) !!}
                     </br>
