@@ -228,15 +228,10 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('hora_duracion', trans('quickadmin.reservacion.fields.hora-duracion').'*', ['class' => 'control-label']) !!}
                     
-                    <?php if ( $sdate == 0 ) { ?>
-                        <input type="text" class="form-control datepicker" name="date">
-                    <?php } else { 
-
-                        var_dump($sdate);
-                        #$dd = date_format($sdate, 'Y-m-d');
-                        ?>
-                        <input type="text" class="form-control datepicker" name="date" value="<?php echo $dd; ?>">
-                    <?php } ?>
+                    <?php  
+                    var_dump($sdate);
+                    var_dump($edate);
+                    ?>
 
 
                     
