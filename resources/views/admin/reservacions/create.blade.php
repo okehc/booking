@@ -151,7 +151,7 @@
 @section('content')
 
 <?php 
-    if (isset($date_ini)) {
+    if ($date_ini != '') {
         $dd = explode('T', $date_ini);;
     }
 ?>
@@ -257,7 +257,9 @@
 
                     <select name="hora_inicio" class="form-control"> 
                     <?php
-
+                        if ($date_ini != ''){
+                            echo "<option value='".$dd[1]."' SELECTED>".$dd[1]."</option>";
+                        }
 
                         $start = "06:00";
                         $end = "22:00";
