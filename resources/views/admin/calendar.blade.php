@@ -57,7 +57,7 @@
             var d = date.getDate();
             var m = date.getMonth();
             var y = date.getFullYear(); 
-            var ub_id = $('#ubicacion_cal');
+            var ub_id = $('#ubicacion_cal').val();
             alert(ub_id);
 
 
