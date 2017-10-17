@@ -16,15 +16,14 @@
                     <table class="table table-bordered table-striped">
                         <tr>
                             <th>@lang('quickadmin.busquedas.fields.fehca')</th>
-                            <td field-key='fehca'>{{ $busqueda->fehca }}</td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.busquedas.fields.ubicacion')</th>
-                            <td field-key='ubicacion'>{{ $busqueda->ubicacion }}</td>
+
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.busquedas.fields.no-personas')</th>
-                            <td field-key='no_personas'>{{ $busqueda->no_personas }}</td>
+
                         </tr>
                     </table>
                 </div>
