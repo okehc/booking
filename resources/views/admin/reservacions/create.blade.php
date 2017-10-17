@@ -180,8 +180,16 @@
 
                         <option value="{{ $ub_default->id }}" SELECTED>{{ $ub_default->nombre}} - {{ $ub_default->ciudad}} - {{ $ub_default->estado}}</option>
                     <?php } else { ?>
-                        <option value="{{ $ub_from_calendar }}" SELECTED>{{ $ub_default->nombre}} - {{ $ub_default->ciudad}} - {{ $ub_default->estado}}</option>
+
+                        <option value="{{ $ub_from_calendar }}" SELECTED>
+                        @foreach($ubs as $ub)
+                        <?php if ($ub->id == $ub_from_calendar ) { ?>
+                            {{ $ub->nombre}} - {{ $ub->ciudad}} - {{ $ub->estado}}</option>
+                        <?php } ?>
+                        @endforeach
                     <?php } ?>
+                        
+
 
                         @foreach($ubs as $ub)
                             <option value="{{ $ub->id }}">{{ $ub->nombre}} - {{ $ub->ciudad}} - {{ $ub->estado}}</option>
