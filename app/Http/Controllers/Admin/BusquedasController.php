@@ -24,10 +24,9 @@ class BusquedasController extends Controller
             return abort(401);
         }
 
+        $ubs = DB::connection('odbc')->select("SELECT a.id, a.nombre, a.ciudad, a.estado FROM ubicaciones a ");
 
-                $busquedas = Busqueda::all();
-
-        return view('admin.busquedas.index', compact('busquedas'));
+        return view('admin.busquedas.index')->with('ubs', $ubs);
     }
 
     /**

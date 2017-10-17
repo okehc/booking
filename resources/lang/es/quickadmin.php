@@ -73,6 +73,7 @@ return [
 			'id-ubicacion' => 'Ubicación',
 			'nombre-seccion' => 'Nombre de Sala',
 			'id-atributos' => 'Atributos de la Sala',
+			'ctd-personas' => 'Ctd. Invitados',
 		],
 	],
 	

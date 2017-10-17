@@ -32,8 +32,7 @@ class SeccionsController extends Controller
         } else {
             
             try {
-                $seccions= DB::connection('odbc')->select('SELECT a.id, b.nombre as id_ubicacion, a.nombre_seccion, a.id_atributos, a.created_at, a.updated_at, 
-                                                           a.deleted_at FROM seccions a JOIN ubicaciones b on a.id_ubicacion = b.id  ') ;     
+                $seccions= DB::connection('odbc')->select('SELECT a.id, b.nombre as id_ubicacion, a.nombre_seccion, a.id_atributos, a.created_at, a.updated_at, a.deleted_at, a.c_personas FROM seccions a JOIN ubicaciones b on a.id_ubicacion = b.id  ') ;     
 
             } catch (\Exception $ubicaciones) {
                 die("Could not connect to the database.  Please check your configuration.");

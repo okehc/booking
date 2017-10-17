@@ -35,7 +35,7 @@
 
                         <th>@lang('quickadmin.seccion.fields.nombre-seccion')</th>
                         <th>@lang('quickadmin.seccion.fields.id-ubicacion')</th>                        
-                        <th>@lang('quickadmin.seccion.fields.id-atributos')</th>
+                        <th>@lang('quickadmin.seccion.fields.ctd-personas')</th>
                         @if( request('show_deleted') == 1 )
                         <th>&nbsp;</th>
                         @else
@@ -54,7 +54,7 @@
                                 
                                 <td field-key='nombre_seccion'>{{ $seccion->nombre_seccion }}</td>
                                 <td field-key='id_ubicacion'>{{ $seccion->id_ubicacion }}</td>                                
-                                <td field-key='id_atributos'>{{ $seccion->id_atributos }}</td>
+                                <td field-key='id_atributos'>{{ $seccion->c_personas }}</td>
                                 @if( request('show_deleted') == 1 )
                                 <td>
                                     @can('seccion_delete')
