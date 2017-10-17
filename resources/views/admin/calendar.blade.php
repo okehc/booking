@@ -58,7 +58,7 @@
             var m = date.getMonth();
             var y = date.getFullYear(); 
             var ub_id = $('#ubicacion_cal').val();
-            var uurl = "http://10.30.42.27/booking/public/admin/evento?ub=1";
+            var uurl = "http://10.30.42.27/booking/public/admin/evento?ub="+ub_id;
             alert(uurl);
 
 
