@@ -71,6 +71,7 @@
                                     @can('reservacion_view')
                                     <a href="{{ route('admin.reservacions.show',[$reservacion->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>
                                     @endcan
+                                     <a href="#" class="btn btn-xs btn-success">@lang('quickadmin.qa_push')</a>
                                     
                                 </td>
 

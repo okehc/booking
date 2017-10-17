@@ -136,6 +136,15 @@
             </li>
             @endcan
 
+            @can('busqueda_access')
+            <li class="{{ $request->segment(2) == 'busquedas' ? 'active' : '' }}">
+                <a href="{{ route('admin.busquedas.index') }}">
+                    <i class="fa fa-gears"></i>
+                    <span class="title">@lang('quickadmin.busquedas.title')</span>
+                </a>
+            </li>
+            @endcan
+
             
 
             

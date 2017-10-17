@@ -56,6 +56,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     Route::resource('evento','Admin\EventoController');
     Route::get('api','EventoController@api'); //ruta que nos devuelve los eventos en formato json
+    Route::resource('busquedas', 'Admin\BusquedasController');
 
 
     #Route::post('/spatie/media/upload', 'Admin\SpatieMediaController@create')->name('media.upload');
