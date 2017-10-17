@@ -4,6 +4,8 @@
 @section('content')
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css'/>
 
+<input type="hidden" name="ubicacion_cal" id="ubicacion_cal" value="<?php echo $ub_id; ?>">
+
     <h3 class="page-title">Calendario</h3>
 
                     {!! Form::label('ubicacion', trans('quickadmin.reservacion.fields.ubicacion').'', ['class' => 'control-label']) !!}
@@ -55,15 +57,17 @@
             var d = date.getDate();
             var m = date.getMonth();
             var y = date.getFullYear(); 
+            var ub_id = $('#ubicacion_cal');
+            alert(ub_id);
 
 
             $('#searchButton').click(function() {
 
                 var ubicacion = $('#ubicacion').val();
-                var sala      = $('.options').val();
+                
 //                alert(ubicacion);
 //                alert(sala);
-                //window.location = "http://10.30.42.27/booking/public/admin/calendar?ub="+ubicacion+"&sa="+sala;
+                window.location = "http://10.30.42.27/booking/public/admin/calendar?ub="+ubicacion;
 
             });
 
