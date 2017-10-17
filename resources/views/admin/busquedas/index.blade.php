@@ -54,6 +54,7 @@
             @lang('quickadmin.busquedas.title')
         </div>
 
+        {!! Form::open(['method' => 'POST', 'route' => ['admin.busquedas.show']]) !!}
         <div class="panel-body table-responsive">
             <table class="table table-bordered table-striped ">
                 <tbody>
@@ -73,17 +74,18 @@
                     <tr>
                         <td>@lang('quickadmin.busquedas.fields.no-personas')</td>
                         <td>
-                            {!! Form::text('no_personas', old('no_personas'), ['class' => 'form-control', 'placeholder' => 'Vacio o 0 - busca todas las salas', 'required' => '']) !!}
+                            {!! Form::text('no_personas', old('no_personas'), ['class' => 'form-control', 'placeholder' => 'nulo o 0 - busca todas las salas', 'required' => '']) !!}
 
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <input type='button' value='Buscar' id='searchB' class='btn btn-primary'>
+                            {!! Form::submit(trans('quickadmin.busquedas.fields.buscar'), ['class' => 'btn btn-primary']) !!}                            
                         </td>
                     </tr>
                 </tbody>
             </table>
+    {!! Form::close() !!}
         </div>
 
     </div>

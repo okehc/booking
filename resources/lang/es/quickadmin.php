@@ -109,6 +109,7 @@ return [
 			'fehca' => 'Fecha',
 			'ubicacion' => 'Ubicacion',
 			'no-personas' => 'No. personas',
+			'buscar' => 'Buscar',
 		],
 	],	
 	'qa_create' => 'Crear',

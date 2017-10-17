@@ -8,6 +8,8 @@
             @lang('quickadmin.qa_view')
         </div>
 
+
+<?php var_dump($libres); ?>
         <div class="panel-body table-responsive">
             <div class="row">
                 <div class="col-md-6">

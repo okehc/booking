@@ -67,14 +67,30 @@ class BusquedasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
         if (! Gate::allows('busqueda_view')) {
             return abort(401);
         }
-        $busqueda = Busqueda::findOrFail($id);
+        
+        $date = $_POST['date'];
+        $no_personas = isset($_POST['no_personas']) ? $_POST['no_personas'] : 0;
+        $ubicacion = $_POST['ubicacion'];
 
-        return view('admin.busquedas.show', compact('busqueda'));
+
+        $salas= DB::connection('odbc')->select("SELECT * FROM salas a WHERE a.id_ubicacion = ".$ubicacion." ");
+
+
+        foreach ($salas as $sala) {
+            
+            $libres[] = DB::connection('odbc')->select(" 
+                SELECT a.* FROM salas a 
+                WHERE a.id NOT IN (SELECT b.id_seccion 
+                                   FROM reservaciones b 
+                                   WHERE b.fecha_inicio ='".$date."') ");
+        }
+
+        return view('admin.busquedas.show')->with('libres', $libres);
     }
 
 }
