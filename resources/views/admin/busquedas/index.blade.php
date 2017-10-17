@@ -26,17 +26,32 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.3/jquery.timepicker.min.css">
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.3/jquery.timepicker.min.js"></script>
+
+    <script>
+        $('.datepicker').datepicker({
+            format: "dd/mm/yyyy",
+            language: "es",
+            autoclose: true,            
+            daysOfWeekHighlighted: "1",
+            calendarWeeks: true, 
+            todayHighlight: true,
+            sideBySide: true
+        });
+
+        $('#searchB').click(function (){
+
+
+
+
+        });
+
+    </script>
 @endsection    
 
 @section('content')
-    <h3 class="page-title">@lang('quickadmin.busquedas.title')</h3>
-Z
-
-    
-
     <div class="panel panel-default">
         <div class="panel-heading">
-            @lang('quickadmin.qa_list')
+            @lang('quickadmin.busquedas.title')
         </div>
 
         <div class="panel-body table-responsive">
@@ -58,8 +73,13 @@ Z
                     <tr>
                         <td>@lang('quickadmin.busquedas.fields.no-personas')</td>
                         <td>
-                            {!! Form::text('no_personas', old('no_personas'), ['class' => 'form-control', 'placeholder' => 'No. invitados', 'required' => '']) !!}
+                            {!! Form::text('no_personas', old('no_personas'), ['class' => 'form-control', 'placeholder' => 'Vacio o 0 - busca todas las salas', 'required' => '']) !!}
 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type='button' value='Buscar' id='searchB' class='btn btn-primary'>
                         </td>
                     </tr>
                 </tbody>
