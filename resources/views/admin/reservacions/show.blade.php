@@ -95,7 +95,8 @@
                     </div>
                 <div class="form-group">
                     <input type="hidden" name="nombre_de_reunion" value="{{ $reservacion->id }}">
-                    <textarea class="form-control minuta" id="minuta" name="minuta">{!! $minuta->content !!}</textarea>
+                    <textarea class="form-control minuta" id="minuta" name="minuta">
+                    <?php echo isset($minuta->content) ? $minuta->content : ''; ?> </textarea>
                 </div>
             
 
