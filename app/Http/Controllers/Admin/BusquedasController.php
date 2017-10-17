@@ -39,7 +39,24 @@ class BusquedasController extends Controller
         if (! Gate::allows('busqueda_create')) {
             return abort(401);
         }
-        return view('admin.busquedas.create');
+        $date = $_POST['date'];
+        $no_personas = isset($_POST['no_personas']) ? $_POST['no_personas'] : 0;
+        $ubicacion = $_POST['ubicacion'];
+
+
+        $salas= DB::connection('odbc')->select("SELECT * FROM salas a WHERE a.id_ubicacion = ".$ubicacion." ");
+
+
+        foreach ($salas as $sala) {
+            
+            $libres[] = DB::connection('odbc')->select(" 
+                SELECT a.* FROM salas a 
+                WHERE a.id NOT IN (SELECT b.id_seccion 
+                                   FROM reservaciones b 
+                                   WHERE b.fecha_inicio ='".$date."') ");
+        }
+
+        return view('admin.busquedas.show')->with('libres', $libres);
     }
 
     /**
@@ -67,30 +84,14 @@ class BusquedasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
         if (! Gate::allows('busqueda_view')) {
             return abort(401);
         }
-        
-        $date = $_POST['date'];
-        $no_personas = isset($_POST['no_personas']) ? $_POST['no_personas'] : 0;
-        $ubicacion = $_POST['ubicacion'];
+        $busqueda = Busqueda::findOrFail($id);
 
-
-        $salas= DB::connection('odbc')->select("SELECT * FROM salas a WHERE a.id_ubicacion = ".$ubicacion." ");
-
-
-        foreach ($salas as $sala) {
-            
-            $libres[] = DB::connection('odbc')->select(" 
-                SELECT a.* FROM salas a 
-                WHERE a.id NOT IN (SELECT b.id_seccion 
-                                   FROM reservaciones b 
-                                   WHERE b.fecha_inicio ='".$date."') ");
-        }
-
-        return view('admin.busquedas.show')->with('libres', $libres);
+        return view('admin.busquedas.show', compact('busqueda'));
     }
 
 }
