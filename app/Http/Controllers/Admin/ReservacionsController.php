@@ -74,8 +74,6 @@ class ReservacionsController extends Controller
 
         $userId = Auth::id();
         $ub = isset($_GET['ub']) ? $_GET['ub'] : 0;
-        $date_ini = isset($_GET['start']) ? $_GET['start'] : 0;
-        $date_fin = isset($_GET['end']) ? $_GET['end'] : 0;
 
         $ub_default= DB::connection('odbc')->selectOne("SELECT a.id, a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN users b ON a.id = b.ubicacion WHERE b.id = ".$userId." ");
 
