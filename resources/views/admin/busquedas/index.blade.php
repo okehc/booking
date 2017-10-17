@@ -54,7 +54,7 @@
             @lang('quickadmin.busquedas.title')
         </div>
 
-        {!! Form::open(['method' => 'POST', 'route' => ['admin.busquedas.create']]) !!}
+        {!! Form::open(['method' => 'POST', 'route' => ['admin.busquedas.store']]) !!}
         <div class="panel-body table-responsive">
             <table class="table table-bordered table-striped ">
                 <tbody>

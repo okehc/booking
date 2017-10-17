@@ -39,9 +39,23 @@ class BusquedasController extends Controller
         if (! Gate::allows('busqueda_create')) {
             return abort(401);
         }
-        $date = $_POST['date'];
-        $no_personas = isset($_POST['no_personas']) ? $_POST['no_personas'] : 0;
-        $ubicacion = $_POST['ubicacion'];
+        return view('admin.busquedas.create');
+    }
+
+    /**
+     * Store a newly created Busqueda in storage.
+     *
+     * @param  \App\Http\Requests\StoreBusquedasRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(StoreBusquedasRequest $request)
+    {
+        if (! Gate::allows('busqueda_create')) {
+            return abort(401);
+        }
+        $date = $request->date;
+        $no_personas = isset($request->no_personas) ? $request->no_personas : 0;
+        $ubicacion = $request->ubicacion;
 
 
         $salas= DB::connection('odbc')->select("SELECT * FROM salas a WHERE a.id_ubicacion = ".$ubicacion." ");
@@ -57,24 +71,6 @@ class BusquedasController extends Controller
         }
 
         return view('admin.busquedas.show')->with('libres', $libres);
-    }
-
-    /**
-     * Store a newly created Busqueda in storage.
-     *
-     * @param  \App\Http\Requests\StoreBusquedasRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreBusquedasRequest $request)
-    {
-        if (! Gate::allows('busqueda_create')) {
-            return abort(401);
-        }
-        $busqueda = Busqueda::create($request->all());
-
-
-
-        return redirect()->route('admin.busquedas.index');
     }
 
 
