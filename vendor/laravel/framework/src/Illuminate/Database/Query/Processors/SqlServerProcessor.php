@@ -26,7 +26,7 @@ class SqlServerProcessor extends Processor
         if ($connection->getConfig('odbc') === true) {
             $id = $this->processInsertGetIdForOdbc($connection);
         } else {
-            $id = $connection->getPdo()->lastInsertId();
+            $id = 1;
         }
 
         return is_numeric($id) ? (int) $id : $id;

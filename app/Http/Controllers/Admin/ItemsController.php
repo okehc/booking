@@ -59,7 +59,15 @@ class ItemsController extends Controller
         if (! Gate::allows('item_create')) {
             return abort(401);
         }
-        $item = Item::create($request->all());
+
+        $query = "INSERT INTO items ( 
+            item_nombre
+            , item_descripcion
+            , created_at) 
+            VALUES ( 
+            ".$request->item_nombre."
+            , ".$request->item_descripcion."
+            , getdate() )";
 
 
 

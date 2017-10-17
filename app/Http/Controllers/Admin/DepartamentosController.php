@@ -59,7 +59,14 @@ class DepartamentosController extends Controller
         if (! Gate::allows('departamento_create')) {
             return abort(401);
         }
-        $departamento = Departamento::create($request->all());
+        $query = "INSERT INTO departamentos ( 
+            departamento
+            , descripcion
+            , created_at) 
+            VALUES ( 
+            ".$request->departamento."
+            , ".$request->descripcion."
+            , getdate() )";
 
 
 

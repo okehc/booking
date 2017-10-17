@@ -59,7 +59,17 @@ class UbicacionesController extends Controller
         if (! Gate::allows('ubicacione_create')) {
             return abort(401);
         }
-        $ubicacione = Ubicacione::create($request->all());
+        
+        $query = "INSERT INTO ubicaciones ( 
+            nombre
+            , ciudad
+            , estado
+            , created_at) 
+            VALUES ( 
+            ".$request->nombre."
+            , ".$request->ciudad."
+            , ".$request->estado."
+            , getdate() )";
 
 
 
