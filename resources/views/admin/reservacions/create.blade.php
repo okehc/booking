@@ -150,8 +150,10 @@
 
 @section('content')
 
-<?php $date_ini = isset($date_ini)? $date_ini : date("Y-m-d");  
- $dd = explode('T', $date_ini);;
+<?php 
+    if (isset($date_ini)) {
+        $dd = explode('T', $date_ini);;
+    }
 ?>
     <h3 class="page-title">@lang('quickadmin.reservacion.title')</h3>
     {!! Form::open(['method' => 'POST', 'route' => ['admin.reservacions.store']]) !!}
@@ -243,7 +245,7 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('hora_duracion', trans('quickadmin.reservacion.fields.hora-duracion').'*', ['class' => 'control-label']) !!}
                     
-                    <?php if ($date_ini == '') { ?>
+                    <?php if (isset($date_ini)) { ?>
                         <input type="text" class="form-control datepicker" name="date">
                     <?php } else { ?>
                         <input type="text" class="form-control datepicker" name="date" value="<?php echo $dd[0]; ?>">
@@ -255,7 +257,7 @@
 
                     <select name="hora_inicio" class="form-control"> 
                     <?php
-                        if ($dd[1] != ''){
+                        if (isset($date_ini) && $dd[1] != ''){
                             echo "<option value='".$dd[1]."' SELECTED>".$dd[1]."</option>";
                         }
 
