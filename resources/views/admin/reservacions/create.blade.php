@@ -257,7 +257,7 @@
 
                     <select name="hora_inicio" class="form-control"> 
                     <?php
-                        if (isset($dd[1])){
+                        if ($date_ini != ''){  
                             echo "<option value='".$dd[1]."' SELECTED>".$dd[1]."</option>";
                         }
 
