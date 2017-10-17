@@ -43,7 +43,6 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('ctd_personas', trans('quickadmin.seccion.fields.ctd-personas').'*', ['class' => 'control-label']) !!}
                     {!! Form::text('c_personas', old('descripcion'), ['class' => 'form-control', 'placeholder' => '']) !!}                    
-                    @endif
                 </div>
             </div>            
             <div class="row">
