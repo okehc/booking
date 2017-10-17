@@ -14,7 +14,6 @@ class EventoController extends Controller
     public function index()
     {
     	$userId = Auth::id();
-    	$ub = isset($_GET['ub'])? $_GET['ub'] : 1;
 
 		$reservacions= DB::connection('odbc')->select("SELECT 
 			a.id, 
@@ -27,8 +26,7 @@ class EventoController extends Controller
 			c.nombre_seccion
 			FROM reservaciones a  
 			JOIN users b ON a.id_usuario = b.id 
-			JOIN  seccions c ON a.id_seccion  = c.id
-			WHERE a.id_ubicacion = ".$ub." ");
+			JOIN  seccions c ON a.id_seccion  = c.id");
  	
 		foreach ($reservacions as $key ) {
 
