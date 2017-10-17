@@ -100,7 +100,10 @@
                 selectable: true,
                 selectHelper: true,
                 select: function(start, end, allDay) {
-                    alert(start);
+                    var sstart = start.split(" ");
+                    alert(sstart[1]);
+                    alert(sstart[2]);
+                    alert(sstart[3]);
                     window.location = "http://10.30.42.27/booking/public/admin/reservacions/create?start="+start+"&end="+end+"&ub="+ub_id;
                 },
                 editable: true,
