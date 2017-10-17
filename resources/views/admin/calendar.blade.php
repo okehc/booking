@@ -59,7 +59,6 @@
             var y = date.getFullYear(); 
             var ub_id = $('#ubicacion_cal').val();
             var uurl = "http://10.30.42.27/booking/public/admin/evento?ub="+ub_id;
-            alert(uurl);
 
 
             $('#searchButton').click(function() {
@@ -91,16 +90,6 @@
                     //segun la fecha.
                     url:uurl
                 },
-
-                eventClick: function(calEvent, jsEvent, view) {
-                    alert('Event: ' + calEvent.title);
-                    alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-                    alert('View: ' + view.name);
-
-                    // change the border color just for fun
-                    $(this).css('border-color', 'red');
-
-                },
                 eventRender: function(event, element, view) {
                     if (event.allDay === 'true') {
                         event.allDay = true;
@@ -113,7 +102,7 @@
                 select: function(start, end, allDay) {
                     var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
                     var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
-                    window.location = "http://10.30.42.27/booking/public/admin/reservacions/create?start="+start+"&end="+end;
+                    window.location = "http://10.30.42.27/booking/public/admin/reservacions/create";
                 },
                 editable: true,
                 selectable: true,
