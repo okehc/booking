@@ -64,6 +64,9 @@
             $('#searchButton').click(function() {
 
                 var ubicacion = $('#ubicacion').val();
+                
+//                alert(ubicacion);
+//                alert(sala);
                 window.location = "http://10.30.42.27/booking/public/admin/calendar?ub="+ubicacion;
 
             });
@@ -85,7 +88,7 @@
                     //en la propiedad url de events ponemos el enlace
                     //y listo eso es todo ya el plugin se encargara de acomodar los eventos
                     //segun la fecha.
-                    url:'http://10.30.42.27/booking/public/admin/evento?ub='
+                    url:'http://10.30.42.27/booking/public/admin/evento'
                 },
 
                 eventClick: function(calEvent, jsEvent, view) {
