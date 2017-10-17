@@ -153,7 +153,6 @@
 <?php 
     if ($date_ini != '') {
         $dd = explode('T', $date_ini);
-        var_dump($dd);
     }
 ?>
     <h3 class="page-title">@lang('quickadmin.reservacion.title')</h3>
@@ -246,7 +245,7 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('hora_duracion', trans('quickadmin.reservacion.fields.hora-duracion').'*', ['class' => 'control-label']) !!}
                     
-                    <?php if (isset($date_ini)) { ?>
+                    <?php if (!isset($date_ini)) { ?>
                         <input type="text" class="form-control datepicker" name="date">
                     <?php } else { ?>
                         <input type="text" class="form-control datepicker" name="date" value="<?php echo $dd[0]; ?>">
