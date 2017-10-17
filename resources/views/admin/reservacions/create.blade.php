@@ -152,9 +152,7 @@
 
 <?php 
 
-    $d = strtotime($date_ini);
-    $dd = date('d/m/Y',$d);
-        var_dump($dd);
+
 ?>
     <h3 class="page-title">@lang('quickadmin.reservacion.title')</h3>
     {!! Form::open(['method' => 'POST', 'route' => ['admin.reservacions.store']]) !!}

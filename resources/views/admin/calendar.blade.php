@@ -101,7 +101,8 @@
                 selectHelper: true,
                 select: function(start, end, allDay) {
                     
-                    window.location = "http://10.30.42.27/booking/public/admin/reservacions/create?start="+start+"&end="+end+"&ub="+ub_id;
+                    alert(start);
+                    //window.location = "http://10.30.42.27/booking/public/admin/reservacions/create?start="+start+"&end="+end+"&ub="+ub_id;
                 },
                 editable: true,
                 selectable: true,
