@@ -232,7 +232,8 @@
                         <input type="text" class="form-control datepicker" name="date">
                     <?php } else { 
 
-                        $dd = date_format($sdate, 'Y-m-d');
+                        var_dump($sdate);
+                        #$dd = date_format($sdate, 'Y-m-d');
                         ?>
                         <input type="text" class="form-control datepicker" name="date" value="<?php echo $dd; ?>">
                     <?php } ?>
