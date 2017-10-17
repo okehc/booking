@@ -153,6 +153,7 @@
 <?php 
     if ($date_ini != '') {
         $dd = explode('T', $date_ini);
+        var_dump($dd);
     }
 ?>
     <h3 class="page-title">@lang('quickadmin.reservacion.title')</h3>
