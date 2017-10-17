@@ -106,7 +106,7 @@ return [
 	'busquedas' => [
 		'title' => 'Busquedas',
 		'fields' => [
-			'fehca' => 'Fehca',
+			'fehca' => 'Fecha',
 			'ubicacion' => 'Ubicacion',
 			'no-personas' => 'No. personas',
 		],
