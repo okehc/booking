@@ -58,13 +58,13 @@ class BusquedasController extends Controller
         $ubicacion = $request->ubicacion;
 
 
-        $salas= DB::connection('odbc')->select("SELECT * FROM salas a WHERE a.id_ubicacion = ".$ubicacion." ");
+        $salas= DB::connection('odbc')->select("SELECT * FROM seccions a WHERE a.id_ubicacion = ".$ubicacion." ");
 
 
         foreach ($salas as $sala) {
             
             $libres[] = DB::connection('odbc')->select(" 
-                SELECT a.* FROM salas a 
+                SELECT a.* FROM seccions a 
                 WHERE a.id NOT IN (SELECT b.id_seccion 
                                    FROM reservaciones b 
                                    WHERE b.fecha_inicio ='".$date."') ");
