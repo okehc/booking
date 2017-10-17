@@ -178,7 +178,7 @@
                     <?php if ( $ub_from_calendar != 0 ){
                         foreach ($ubs as $ub) {
                             if ( $ub->id == $ub_from_calendar ){
-                                echo "<option value=".$ub_from_calendar." SELECTED>".$ub->nombre." - ".$ub->ciudad." - ".$ub->estado."</option>";
+                                echo "<option value='1' SELECTED>".$ub->nombre." - ".$ub->ciudad." - ".$ub->estado."</option>";
                             }
                         }
                     } else {
