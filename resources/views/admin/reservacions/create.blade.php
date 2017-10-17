@@ -150,7 +150,11 @@
 
 @section('content')
 
-<?php var_dump($date_ini);?>
+<?php 
+
+    $dd = date_format($date_ini, 'Y-m-d');
+        var_dump($dd);
+?>
     <h3 class="page-title">@lang('quickadmin.reservacion.title')</h3>
     {!! Form::open(['method' => 'POST', 'route' => ['admin.reservacions.store']]) !!}
 
