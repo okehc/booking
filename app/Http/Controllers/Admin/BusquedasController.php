@@ -55,7 +55,7 @@ class BusquedasController extends Controller
         }
         $date = $request->date;
         $dd=explode('/', $date);
-        $real_date = $date[2]."/".$date[1]."/".$date[0];
+        $real_date = $dd[2]."/".$dd[1]."/".$dd[0];
         $no_personas = isset($request->no_personas) ? $request->no_personas : 0;
         $ubicacion = $request->ubicacion;
 
