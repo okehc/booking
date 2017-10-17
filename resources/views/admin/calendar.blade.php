@@ -100,11 +100,11 @@
                 selectable: true,
                 selectHelper: true,
                 select: function(start, end, allDay) {
-                    var sstart = start.split(" ");
-                    alert(sstart[1]);
-                    alert(sstart[2]);
-                    alert(sstart[3]);
-                    window.location = "http://10.30.42.27/booking/public/admin/reservacions/create?start="+start+"&end="+end+"&ub="+ub_id;
+                  var allDay = !start.hasTime() && !end.hasTime();
+                  alert(["Event Start date: " + moment(start).format(),
+                        "Event End date: " + moment(end).format(),
+                        "AllDay: " + allDay].join("\n"));
+                    //window.location = "http://10.30.42.27/booking/public/admin/reservacions/create?start="+start+"&end="+end+"&ub="+ub_id;
                 },
                 editable: true,
                 selectable: true,
