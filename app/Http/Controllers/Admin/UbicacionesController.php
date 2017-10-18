@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreUbicacionesRequest;
 use App\Http\Requests\Admin\UpdateUbicacionesRequest;
-use DB;
-use Auth;
 
 class UbicacionesController extends Controller
 {
@@ -33,7 +31,7 @@ class UbicacionesController extends Controller
         } else {
         
 
-        $ubicaciones= DB::connection('odbc')->select('SELECT nombre FROM ubicaciones'); 
+        $ubicaciones= DB::connection('odbc')->select('SELECT a.id, a.nombre, a.ciudad, a.estado, a.created_at FROM ubicaciones a'); 
 
         }
 
