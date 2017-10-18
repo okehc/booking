@@ -37,7 +37,7 @@ class UbicacionesController extends Controller
 
         }
 
-        return view('admin.ubicaciones.index')-with('ubicaciones', $ubicaciones);
+        return view('admin.ubicaciones.index')->with('ubicaciones', $ubicaciones);
     }
 
     /**
