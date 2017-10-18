@@ -2,6 +2,18 @@
 
 <script>
     
+$('#nombre').keyup(function(){ 
+
+    var name = $('#nombre').val();
+
+    var ar = <?php echo '["' . implode('", "', $ar) . '"]' ?>;
+    alert(name);
+    alert(ar);
+
+
+
+});
+
 
 </script>
 
