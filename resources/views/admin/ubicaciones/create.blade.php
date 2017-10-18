@@ -1,5 +1,12 @@
 @extends('layouts.app')
 
+<script>
+    
+
+</script>
+
+<?php var_dump($ubicaciones); ?>
+
 @section('content')
     <h3 class="page-title">@lang('quickadmin.ubicaciones.title')</h3>
     {!! Form::open(['method' => 'POST', 'route' => ['admin.ubicaciones.store']]) !!}
