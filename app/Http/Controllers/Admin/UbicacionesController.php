@@ -52,7 +52,7 @@ class UbicacionesController extends Controller
         }
 
 
-        $ubicaciones= DB::connection('odbc')->select('SELECT a.nombre FROM ubicaciones a'); 
+        $ubicaciones= DB::connection('odbc')->selectOne('SELECT a.nombre FROM ubicaciones a'); 
 
         return view('admin.ubicaciones.create')->with('ubicaciones', $ubicaciones);
     }
