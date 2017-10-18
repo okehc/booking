@@ -12,15 +12,7 @@ $(document).ready(function() {
 
         var check = checkForValue(stored_name, tmp_name);
 
-        if (check == true){
-            alert("ya existe");
-        } else {
-            alert("NO existe");
-
-        }
-
-
-        alert(name);
+        alert(check);
     });
 
 
@@ -33,6 +25,7 @@ function checkForValue(json, value) {
         if (typeof (json[key]) === "object") {
             return checkForValue(json[key], value);
         } else if (json[key] === value) {
+            alert();
             return true;
         }
     }
