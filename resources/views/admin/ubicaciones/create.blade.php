@@ -34,13 +34,9 @@ alert(stored_name);
 
 function checkForValue(json, value) {
     for (key in json) {
-        if (typeof (json[key]) === "object") {
-            return checkForValue(json[key], value);
-        } else if (json[key] === value) {
-            return true;
-        }
+        alert(key);
+        alert("algoantes=");
     }
-    return false;
 }
 
 
