@@ -1,4 +1,4 @@
-<?php
+h<?php
 
 namespace App\Http\Controllers\Admin;
 
@@ -68,7 +68,9 @@ class SeccionsController extends Controller
             die("Could not connect to the database.  Please check your configuration.");
         }
 
-        return view('admin.seccions.create')->with('ubicaciones', $ubicaciones)->with('items', $items);
+            $seccions= DB::connection('odbc')->select('SELECT id_ubicacion, nombre_seccion FROM seccions') ;                
+
+        return view('admin.seccions.create')->with('ubicaciones', $ubicaciones)->with('items', $items)->with('seccions', $seccions);
     }
 
     /**

@@ -1,4 +1,66 @@
 @extends('layouts.app')
+@section('javascript')
+<script>
+
+$(document).ready(function() {
+    
+    $('#nombre_seccion').change(function(){ 
+
+        var id_ub = $('#id_ubicacion').val();
+        
+        var tmp_name = $('#nombre_seccion').val();
+
+        var stored = $('#json_val').val();
+        
+        var obj = JSON.parse(stored);
+
+        $('#nombre_seccion').css('border-color','gray');
+        $('#seccion_help').css('color', 'gray');
+        $('#seccion_help').text('Disponible.');
+        $.each(obj, function() {
+            $.each(this, function(k, v) {
+                
+                if(id_ub == k){
+                    if(v == tmp_name){
+                    alert('Ya existe el nombre de sala para esta ubicacion.');
+                    $('#seccion_help').text('Ya existe el nombre para esta ubicación.');
+                    $('#nombre_seccion').css('border-color','red');
+                    $('#seccion_help').css('color', 'red');
+                    }
+                }
+            });
+        });
+
+
+
+    });
+});
+
+
+
+
+</script>
+@endsection
+
+
+<?php 
+
+
+$result = array();
+foreach ($seccions as $seccions) {
+
+            $data = array(
+             $seccions->id_ubicacion    =>    $seccions->nombre_seccion,        
+         );
+         array_push($result,$data);
+}
+
+echo "<input type='text' name='json_val' id='json_val' class='json_val' value='".json_encode($result)."'>"; 
+
+?>
+
+
+
 
 @section('content')
     <h3 class="page-title">@lang('quickadmin.seccion.title')</h3>
@@ -13,8 +75,8 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('nombre_seccion', trans('quickadmin.seccion.fields.nombre-seccion').'*', ['class' => 'control-label']) !!}
-                    {!! Form::text('nombre_seccion', old('nombre_seccion'), ['class' => 'form-control', 'placeholder' => 'Nombre del recurso', 'required' => '']) !!}
-                    <p class="help-block">Nombre del recurso</p>
+                    {!! Form::text('nombre_seccion', old('nombre_seccion'), ['class' => 'form-control',  'required' => '']) !!}
+                    <p class="help-block" id="seccion_help"></p>
                     @if($errors->has('nombre_seccion'))
                         <p class="help-block">
                             {{ $errors->first('nombre_seccion') }}

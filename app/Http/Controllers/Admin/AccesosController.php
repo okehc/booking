@@ -76,7 +76,7 @@ class AccesosController extends Controller
             return abort(401);
         }
 
-        $in_accesos= DB::connection('odbc')->insert("INSERT INTO accesos (nombre_acceso, id_ubicacion, created_at) VALUES ('".$request->nombre_acceso."', ".$request->id_ubicacion.", getdate() ");
+        $in_accesos= DB::connection('odbc')->insert("INSERT INTO accesos (nombre_acceso, id_ubicacion, created_at) VALUES ('".$request->nombre_acceso."', ".$request->id_ubicacion.", getdate() )");
     
 
 
