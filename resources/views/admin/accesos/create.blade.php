@@ -14,13 +14,20 @@ $(document).ready(function() {
         
         var obj = JSON.parse(stored);
 
-//        $('#nombre_acceso').css('border-color','gray');
-//        $('nombre_status').css('color', 'gray');
-//        $('#nombre_status').text('Disponible.');
+        $('#nombre_acceso').css('border-color','gray');
+        $('#help_nombre').css('color', 'gray');
+        $('#help_nombre').text('Disponible.');
         $.each(obj, function() {
             $.each(this, function(k, v) {
                 
-                alert(v);
+                if(id_ub == k){
+                    if(v == tmp_name){
+                    alert('Ya existe el nombre para esta ubicacion.');
+                    $('#help_nombre').text('Ya existe el nombre para esta ubicación.');
+                    $('#nombre_acceso').css('border-color','red');
+                    $('#help_nombre').css('color', 'red');
+                    }
+                }
             });
         });
 
@@ -64,8 +71,8 @@ echo "<input type='text' name='json_val' id='json_val' class='json_val' value='"
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('nombre_acceso', trans('quickadmin.accesos.fields.nombre-acceso').'*', ['class' => 'control-label']) !!}
-                    {!! Form::text('nombre_acceso', old('nombre_acceso'), ['class' => 'form-control', 'placeholder' => 'Nombre del acceso a crear', 'required' => '']) !!}            
-                    <p class="help-block">Nombre del acceso a crear</p>
+                    {!! Form::text('nombre_acceso', old('nombre_acceso'), ['class' => 'form-control',  'required' => '']) !!}            
+                    <p class="help-block" id="help_nombre" class="help_nombre"></p>
                     @if($errors->has('nombre_acceso'))
                         <p class="help-block">
                             {{ $errors->first('nombre_acceso') }}
