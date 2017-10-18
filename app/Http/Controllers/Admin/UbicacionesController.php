@@ -29,10 +29,13 @@ class UbicacionesController extends Controller
             }
             $ubicaciones = Ubicacione::onlyTrashed()->get();
         } else {
-            $ubicaciones = Ubicacione::all();
+        
+
+        $ubicaciones= DB::connection('odbc')->select('SELECT nombre FROM ubicaciones'); 
+
         }
 
-        return view('admin.ubicaciones.index', compact('ubicaciones'));
+        return view('admin.ubicaciones.index')-with('ubicaciones', $ubicaciones);
     }
 
     /**
@@ -45,7 +48,11 @@ class UbicacionesController extends Controller
         if (! Gate::allows('ubicacione_create')) {
             return abort(401);
         }
-        return view('admin.ubicaciones.create');
+
+
+        $ubicaciones= DB::connection('odbc')->select('SELECT a.id, a.nombre, a.ciudad, a.estado, a.created_at FROM ubicaciones a'); 
+
+        return view('admin.ubicaciones.create')->with('ubicaciones', $ubicaicones);
     }
 
     /**
