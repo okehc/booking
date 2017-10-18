@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreUbicacionesRequest;
 use App\Http\Requests\Admin\UpdateUbicacionesRequest;
+use DB;
+use Auth;
 
 class UbicacionesController extends Controller
 {
