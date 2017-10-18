@@ -12,16 +12,16 @@ $(document).ready(function() {
 
 alert(tmp_name);
 alert(stored_name);
-alert(IsJsonString(stored_name));
+var obj = JSON.parse(stored_name);
 
-        var check = checkForValue(stored_name, tmp_name);
 
-        if (check == true){
-            alert("ya existe");
-        } else {
-            alert("NO existe");
+$.each(obj, function() {
+  $.each(this, function(k, v) {
+    alert(v);
+  });
+});
 
-        }
+
 
 
         alert(name);
