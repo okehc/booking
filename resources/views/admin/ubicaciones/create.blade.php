@@ -1,12 +1,18 @@
 @extends('layouts.app')
 
+@section('javascript')
 <script>
+
+$(document).ready(function() {
     
-$('#nombre').keyup(function(){ 
+    $('#nombre').change(function(){ 
 
-    var name = $('#json_name').val();
+        var name = $('#json_name').val();
 
-    alert(name);
+        alert(name);
+    });
+
+
 
 
 });
@@ -15,6 +21,8 @@ $('#nombre').keyup(function(){
 
 
 </script>
+@endsection
+
 
 <?php var_dump($ubicaciones); 
 
@@ -28,7 +36,7 @@ foreach ($ubicaciones as $ub) {
          array_push($result,$data);
 }
 
-echo "<input type='text' name='json_name' id='json_name' class='json_name' value='".json_encode($result)."'>";
+echo "<input type='text' name='json_name' id='json_name' class='json_name' value='".json_encode($result)." ss'>"; 
 
 ?>
 
