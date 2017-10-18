@@ -34,7 +34,7 @@ alert(stored_name);
 
 function checkForValue(json, value) {
     for (key in json) {
-        alert(key);
+        alert(json[key]->name);
         alert("algoantes=");
     }
 }
