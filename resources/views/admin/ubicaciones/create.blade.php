@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 alert(tmp_name);
 alert(stored_name);
-
+alert(IsJsonString(stored_name));
 
         var check = checkForValue(stored_name, tmp_name);
 
@@ -34,7 +34,7 @@ alert(stored_name);
 
 function checkForValue(json, value) {
     for (key in json) {
-        alert(json[key]->name);
+        alert(key.name);
         alert("algoantes=");
     }
 }
@@ -56,7 +56,7 @@ foreach ($ubicaciones as $ub) {
          array_push($result,$data);
 }
 
-echo "<input type='text' name='json_name' id='json_name' class='json_name' value='".json_encode($result)." ss'>"; 
+echo "<input type='text' name='json_name' id='json_name' class='json_name' value='".json_encode($result)."'>"; 
 
 ?>
 
