@@ -75,8 +75,9 @@ class AccesosController extends Controller
         if (! Gate::allows('acceso_create')) {
             return abort(401);
         }
-        $acceso = Acceso::create($request->all());
 
+        $in_accesos= DB::connection('odbc')->insert("INSERT INTO accesos (nombre_acceso, id_ubicacion, created_at) VALUES ('".$request->nombre_acceso."', ".$request->id_ubicacion.", getdate() ");
+    
 
 
         return redirect()->route('admin.accesos.index');
