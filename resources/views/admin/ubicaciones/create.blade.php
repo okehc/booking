@@ -7,17 +7,37 @@ $(document).ready(function() {
     
     $('#nombre').change(function(){ 
 
-        var name = $('#json_name').val();
+        var stored_name = $('#json_name').val();
+        var tmp_name = $('#nombre').val();
+
+        var check = checkForValue(stored_name, tmp_name);
+
+        if (check == true){
+            alert("ya existe");
+        } else {
+            alert("NO existe");
+
+        }
+
 
         alert(name);
     });
 
 
-
-
 });
 
 
+
+function checkForValue(json, value) {
+    for (key in json) {
+        if (typeof (json[key]) === "object") {
+            return checkForValue(json[key], value);
+        } else if (json[key] === value) {
+            return true;
+        }
+    }
+    return false;
+}
 
 
 </script>
