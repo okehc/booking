@@ -6,11 +6,9 @@ $('#nombre').keyup(function(){
 
     var name = $('#nombre').val();
 
-    if (name.val() != '') {
-        var ar = <?php echo '["' . implode('", "', $name) . '"]' ?>;
-        alert(name);
-        alert(ar);
-    }
+    var ar = <?php echo '["' . implode('", "', $name) . '"]' ?>;
+    alert(name);
+    alert(ar);
 
 
 
@@ -34,7 +32,9 @@ $('#nombre').keyup(function(){
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('nombre', trans('quickadmin.ubicaciones.fields.nombre').'*', ['class' => 'control-label']) !!}
-                    {!! Form::text('nombre', old('nombre'), ['class' => 'form-control', 'placeholder' => 'Nombre para identificar la ubicación', 'required' => '' id='name' ]) !!}
+
+                    <input type="text" name="nombre" class="nombre" placeholder="Nombre para identificar la ubicación" id="nombre">
+                    
                     <p class="help-block">Nombre para identificar la ubicación</p>
                     @if($errors->has('nombre'))
                         <p class="help-block">
