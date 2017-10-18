@@ -43,8 +43,7 @@ $result = array();
 foreach ($n_accesos as $n_acceso) {
 
             $data = array(
-             'n_acceso'    =>    $n_acceso->nombre_acceso,        
-             'id_ub'    =>    $n_acceso->id_ubicacion,        
+             $n_acceso->id_ubicacion    =>    $n_acceso->nombre_acceso,        
          );
          array_push($result,$data);
 }
