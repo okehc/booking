@@ -11,7 +11,7 @@ $(document).ready(function() {
         var tmp_name = $('#nombre').val();
         var obj = JSON.parse(stored_name);
 
-        $('#nombre').parent().css('border-color','gray');
+        $('#nombre').css('border-color','gray');
         $('nombre_status').css('color', 'gray');
         $('#nombre_status').text('Disponible.');
         $.each(obj, function() {

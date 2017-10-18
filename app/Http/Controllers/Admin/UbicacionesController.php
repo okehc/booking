@@ -69,7 +69,7 @@ class UbicacionesController extends Controller
             return abort(401);
         }
         
-        $query = "INSERT INTO ubicaciones ( 
+        $q= DB::connection('odbc')->insert("INSERT INTO ubicaciones ( 
             nombre
             , ciudad
             , estado
