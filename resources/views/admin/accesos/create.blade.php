@@ -1,5 +1,57 @@
 @extends('layouts.app')
+@section('javascript')
+<script>
 
+$(document).ready(function() {
+    
+    $('#nombre_acceso').change(function(){ 
+
+        var id_ub = $('#id_ubicacion').val();
+        
+        var tmp_name = $('#nombre_acceso').val();
+
+        var stored = $('#json_val').val();
+        
+        var obj = JSON.parse(stored);
+
+//        $('#nombre_acceso').css('border-color','gray');
+//        $('nombre_status').css('color', 'gray');
+//        $('#nombre_status').text('Disponible.');
+        $.each(obj, function() {
+            $.each(this, function(k, v) {
+                
+                alert(v);
+            });
+        });
+
+
+
+    });
+});
+
+
+
+
+</script>
+@endsection
+
+
+<?php 
+
+
+$result = array();
+foreach ($n_accesos as $n_acceso) {
+
+            $data = array(
+             'n_acceso'    =>    $n_acceso->nombre_acceso,        
+             'id_ub'    =>    $n_acceso->id_ubicacion,        
+         );
+         array_push($result,$data);
+}
+
+echo "<input type='text' name='json_val' id='json_val' class='json_val' value='".json_encode($result)."'>"; 
+
+?>
 @section('content')
     <h3 class="page-title">@lang('quickadmin.accesos.title')</h3>
     {!! Form::open(['method' => 'POST', 'route' => ['admin.accesos.store']]) !!}
@@ -25,7 +77,7 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('id_ubicacion', trans('quickadmin.accesos.fields.id-ubicacion').'*', ['class' => 'control-label']) !!}
-                    <select name="id_ubicacion">
+                    <select name="id_ubicacion" id="id_ubicacion">
                         @foreach($ubicaciones as $ubicacion)
                          <option value="{{ $ubicacion->id }}">{{ $ubicacion->nombre}} - {{ $ubicacion->estado}}</option>
                         @endforeach

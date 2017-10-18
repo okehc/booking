@@ -75,9 +75,9 @@ class UbicacionesController extends Controller
             , estado
             , created_at) 
             VALUES ( 
-            ".$request->nombre."
-            , ".$request->ciudad."
-            , ".$request->estado."
+            '".$request->nombre."'
+            , '".$request->ciudad."'
+            , '".$request->estado."'
             , getdate() )");
 
 

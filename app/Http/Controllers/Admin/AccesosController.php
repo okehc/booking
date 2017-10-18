@@ -55,12 +55,13 @@ class AccesosController extends Controller
         }
 
         try {
-            $ubicaciones= DB::connection('odbc')->select('SELECT id, nombre, estado FROM ubicaciones') ;                
+            $ubicaciones= DB::connection('odbc')->select('SELECT id, nombre, estado FROM ubicaciones') ;           
+            $n_accesos= DB::connection('odbc')->select('SELECT nombre_acceso, id_ubicacion FROM accesos') ;     
         } catch (\Exception $ubicaciones) {
             die("Could not connect to the database.  Please check your configuration.");
         }
 
-        return view('admin.accesos.create')->with('ubicaciones', $ubicaciones);
+        return view('admin.accesos.create')->with('ubicaciones', $ubicaciones)->with('n_accesos', $n_accesos );
     }
 
     /**

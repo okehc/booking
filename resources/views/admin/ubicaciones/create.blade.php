@@ -38,7 +38,7 @@ $(document).ready(function() {
 @endsection
 
 
-<?php var_dump($ubicaciones); 
+<?php 
 
 
 $result = array();
