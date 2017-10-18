@@ -1,8 +1,36 @@
 @extends('layouts.app')
 
+<script>
+    
+$('#nombre').keyup(function(){ 
+
+    var name = $('#json_name').val();
+
+    alert(name);
 
 
-<?php var_dump($ubicaciones); ?>
+});
+
+
+
+
+</script>
+
+<?php var_dump($ubicaciones); 
+
+
+$result = array();
+foreach ($ubicaciones as $ub) {
+
+            $data = array(
+             'name'    =>    $ub->nombre,        
+         );
+         array_push($result,$data);
+}
+
+echo "<input type='text' name='json_name' id='json_name' class='json_name' value='".json_encode($result)."'>";
+
+?>
 
 @section('content')
     <h3 class="page-title">@lang('quickadmin.ubicaciones.title')</h3>
@@ -18,7 +46,8 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('nombre', trans('quickadmin.ubicaciones.fields.nombre').'*', ['class' => 'control-label']) !!}
 
-                    <input type="text" name="nombre" class="nombre" placeholder="Nombre para identificar la ubicación" id="nombre">
+                    <input type="text" name="nombre" class="form-control" placeholder="Nombre para identificar la ubicación" id="nombre">
+
 
                     <p class="help-block">Nombre para identificar la ubicación</p>
                     @if($errors->has('nombre'))
