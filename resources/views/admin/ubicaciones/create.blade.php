@@ -10,34 +10,25 @@ $(document).ready(function() {
         var stored_name = $('#json_name').val();
         var tmp_name = $('#nombre').val();
 
-alert(tmp_name);
-alert(stored_name);
-var obj = JSON.parse(stored_name);
+        alert(tmp_name);
+        alert(stored_name);
+        var obj = JSON.parse(stored_name);
 
 
-$.each(obj, function() {
-  $.each(this, function(k, v) {
-    alert(v);
-  });
-});
+        $.each(obj, function() {
+            $.each(this, function(k, v) {
+                if (v == tmp_name){
+                    $('#nombre_status').text('ok');
+                } else {
+                    $('#nombre_status').text('Ya existe el nombre.');
+                }
 
-
-
-
-        alert(name);
+            });
+        });
     });
-
-
 });
 
 
-
-function checkForValue(json, value) {
-    for (key in json) {
-        alert(key.name);
-        alert("algoantes=");
-    }
-}
 
 
 </script>
@@ -77,7 +68,7 @@ echo "<input type='text' name='json_name' id='json_name' class='json_name' value
                     <input type="text" name="nombre" class="form-control" placeholder="Nombre para identificar la ubicación" id="nombre">
 
 
-                    <p class="help-block">Nombre para identificar la ubicación</p>
+                    <p class="help-block" id="nombre_status" ></p>
                     @if($errors->has('nombre'))
                         <p class="help-block">
                             {{ $errors->first('nombre') }}
