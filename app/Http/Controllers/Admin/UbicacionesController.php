@@ -78,7 +78,7 @@ class UbicacionesController extends Controller
             ".$request->nombre."
             , ".$request->ciudad."
             , ".$request->estado."
-            , getdate() )";
+            , getdate() )");
 
 
 
