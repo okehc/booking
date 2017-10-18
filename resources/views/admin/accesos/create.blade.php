@@ -20,7 +20,7 @@ $(document).ready(function() {
         $.each(obj, function() {
             $.each(this, function(k, v) {
                 
-                alert(v);
+                alert(k);
             });
         });
 
@@ -39,17 +39,30 @@ $(document).ready(function() {
 <?php 
 
 
-$result = array();
+$result_ac= array();
 foreach ($n_accesos as $n_acceso) {
 
             $data = array(
-             'n_acceso'    =>    $n_acceso->nombre_acceso,        
-             'id_ub'    =>    $n_acceso->id_ubicacion,        
+             'n_acceso'    =>    $n_acceso->nombre_acceso,                    
          );
-         array_push($result,$data);
+         array_push($result_ac,$data);
 }
 
-echo "<input type='text' name='json_val' id='json_val' class='json_val' value='".json_encode($result)."'>"; 
+
+
+$result_id = array();
+foreach ($n_accesos as $n_acceso) {
+
+            $data_id = array(
+             'id_ub'    =>    $n_acceso->id_ubicacion,        
+         );
+         array_push($result_id,$data_id);
+}
+
+echo "<input type='hidden' name='json_val' id='json_val' class='json_val' value='".json_encode($result)."'>"; 
+
+
+echo "<input type='hidden' name='json_val' id='json_val' class='json_val' value='".json_encode($result)."'>"; 
 
 ?>
 @section('content')
