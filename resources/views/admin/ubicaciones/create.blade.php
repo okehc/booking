@@ -9,22 +9,25 @@ $(document).ready(function() {
 
         var stored_name = $('#json_name').val();
         var tmp_name = $('#nombre').val();
-
-        alert(tmp_name);
-        alert(stored_name);
         var obj = JSON.parse(stored_name);
 
-
+        $('#nombre').parent().css('border-color','gray');
+        $('nombre_status').css('color', 'gray');
+        $('#nombre_status').text('Disponible.');
         $.each(obj, function() {
             $.each(this, function(k, v) {
-                if (v == tmp_name){
-                    $('#nombre_status').text('ok');
-                } else {
+                
+                if(v == tmp_name) {
+                    alert('Ya existe el nombre.');
                     $('#nombre_status').text('Ya existe el nombre.');
-                }
-
+                    $('#nombre').css('border-color','red');
+                    $('nombre_status').css('color', 'red');
+                } 
             });
         });
+
+
+
     });
 });
 
