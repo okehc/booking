@@ -11,7 +11,6 @@
 
 @section('content')
 
-<?php var_dump($ubicaciones); ?>
     <h3 class="page-title">@lang('quickadmin.ubicaciones.title')</h3>
     @can('ubicacione_create')
     <p>
