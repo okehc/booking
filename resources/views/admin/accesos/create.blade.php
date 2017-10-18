@@ -17,6 +17,7 @@ $(document).ready(function() {
         $('#nombre_acceso').css('border-color','gray');
         $('#help_nombre').css('color', 'gray');
         $('#help_nombre').text('Disponible.');
+        $(':input[type="submit"]').prop('disabled', false)
         $.each(obj, function() {
             $.each(this, function(k, v) {
                 
@@ -26,6 +27,7 @@ $(document).ready(function() {
                     $('#help_nombre').text('Ya existe el nombre para esta ubicación.');
                     $('#nombre_acceso').css('border-color','red');
                     $('#help_nombre').css('color', 'red');
+                    $(':input[type="submit"]').prop('disabled', true)
                     }
                 }
             });
@@ -55,7 +57,7 @@ foreach ($n_accesos as $n_acceso) {
          array_push($result,$data);
 }
 
-echo "<input type='text' name='json_val' id='json_val' class='json_val' value='".json_encode($result)."'>"; 
+echo "<input type='hidden' name='json_val' id='json_val' class='json_val' value='".json_encode($result)."'>"; 
 
 ?>
 @section('content')

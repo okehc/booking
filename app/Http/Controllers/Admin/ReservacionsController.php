@@ -149,8 +149,12 @@ class ReservacionsController extends Controller
             $guest_count = (count($request->guest_name));
 
             for ($i=0; $i < $guest_count; $i++) { 
+
+                 if( $request->guest_name[$i] == '' || $request->guest_email[$i] == '') {
+                 } else {
                 
-                 DB::connection('odbc')->insert("INSERT INTO invitados (id_reservacion, nombre, apellido, email, created_at) VALUES (".$last_id->id.", '".$request->guest_name[$i]."', '".$request->guest_last[$i]."', '".$request->guest_email[$i]."', getdate()) ");
+                    DB::connection('odbc')->insert("INSERT INTO invitados (id_reservacion, nombre, apellido, email, created_at) VALUES (".$last_id->id.", '".$request->guest_name[$i]."', '".$request->guest_last[$i]."', '".$request->guest_email[$i]."', getdate()) ");
+                }
             }
 
             if( $repeat == 1 ) {

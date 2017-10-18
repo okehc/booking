@@ -17,6 +17,7 @@ $(document).ready(function() {
         $('#nombre_seccion').css('border-color','gray');
         $('#seccion_help').css('color', 'gray');
         $('#seccion_help').text('Disponible.');
+        $(':input[type="submit"]').prop('disabled', false)
         $.each(obj, function() {
             $.each(this, function(k, v) {
                 
@@ -26,6 +27,7 @@ $(document).ready(function() {
                     $('#seccion_help').text('Ya existe el nombre para esta ubicación.');
                     $('#nombre_seccion').css('border-color','red');
                     $('#seccion_help').css('color', 'red');
+                    $(':input[type="submit"]').prop('disabled', true)
                     }
                 }
             });
@@ -55,7 +57,7 @@ foreach ($seccions as $seccions) {
          array_push($result,$data);
 }
 
-echo "<input type='text' name='json_val' id='json_val' class='json_val' value='".json_encode($result)."'>"; 
+echo "<input type='hidden' name='json_val' id='json_val' class='json_val' value='".json_encode($result)."'>"; 
 
 ?>
 
@@ -87,7 +89,7 @@ echo "<input type='text' name='json_val' id='json_val' class='json_val' value='"
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('id_ubicacion', trans('quickadmin.seccion.fields.id-ubicacion').'*', ['class' => 'control-label']) !!}
-                    <select name="id_ubicacion">
+                    <select name="id_ubicacion" id="id_ubicacion">
                         @foreach($ubicaciones as $ubicacion)
                          <option value="{{ $ubicacion->id }}">{{ $ubicacion->nombre}} - {{ $ubicacion->estado}}</option>
                         @endforeach

@@ -51,9 +51,9 @@
 
         var newTextBoxDiv = $(document.createElement('div')).attr("id", 'TextBoxDiv' + counter);
 
-        newTextBoxDiv.after().html('<table class="table"><tr><td><input type="text" name="guest_name[]"' + counter + '" id="textbox1' + counter + '" value="" ></td>' + 
+        newTextBoxDiv.after().html('<tr><td><input type="text" name="guest_name[]"' + counter + '" id="textbox1' + counter + '" value="" ></td>' + 
             '<td><input type="text" name="guest_last[]"' + counter + '" id="textbox1' + counter + '" value="" ></td>' +
-            '<td><input type="text" name="guest_email[]"' + counter + '" id="textbox1' + counter + '" value="" ></td></tr></table>'  );
+            '<td><input type="text" name="guest_email[]"' + counter + '" id="textbox1' + counter + '" value="" ></td></tr>'  );
 
         newTextBoxDiv.appendTo("#TextBoxesGroup");
 

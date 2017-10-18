@@ -23,6 +23,7 @@ return [
 			'apellido-materno' => 'Apellido Materno',
 			'ubicacion' => 'Ubicación',
 			'departamento' => 'Departamento',
+			'acceso' => 'Acceso',
 			'extension' => 'Extensión',
 			'email' => 'Correo',
 			'password' => 'Contraseña',

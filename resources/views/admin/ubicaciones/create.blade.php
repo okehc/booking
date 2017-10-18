@@ -11,6 +11,7 @@ $(document).ready(function() {
         var tmp_name = $('#nombre').val();
         var obj = JSON.parse(stored_name);
 
+        $(':input[type="submit"]').prop('disabled', false)
         $('#nombre').css('border-color','gray');
         $('nombre_status').css('color', 'gray');
         $('#nombre_status').text('Disponible.');
@@ -22,6 +23,7 @@ $(document).ready(function() {
                     $('#nombre_status').text('Ya existe el nombre.');
                     $('#nombre').css('border-color','red');
                     $('nombre_status').css('color', 'red');
+                    $(':input[type="submit"]').prop('disabled', true)
                 } 
             });
         });
@@ -50,7 +52,7 @@ foreach ($ubicaciones as $ub) {
          array_push($result,$data);
 }
 
-echo "<input type='text' name='json_name' id='json_name' class='json_name' value='".json_encode($result)."'>"; 
+echo "<input type='hidden' name='json_name' id='json_name' class='json_name' value='".json_encode($result)."'>"; 
 
 ?>
 

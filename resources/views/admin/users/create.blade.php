@@ -1,5 +1,36 @@
 @extends('layouts.app')
 
+
+@section('javascript')
+<script>
+$(document).ready(function() {
+
+    $('.options').hide();
+    $('#div_acceso').hide();
+    $('#role_id').change(function(){  
+
+        var role_val = $('#role_id').val();
+
+        if (role_val == 3){
+
+            var id_ub = $('#ubicacion').val();
+            $('.options').hide();
+            $('#' + id_ub).show();
+            $('#div_acceso').show();
+        } else {
+            $('#div_acceso').hide();
+            $('.options').hide();
+        }
+    });
+
+
+
+});
+
+
+</script>
+@endsection
+
 @section('content')
     <h3 class="page-title">@lang('quickadmin.users.title')</h3>
     {!! Form::open(['method' => 'POST', 'route' => ['admin.users.store']]) !!}
@@ -49,7 +80,7 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('ubicacion', trans('quickadmin.users.fields.ubicacion').'*', ['class' => 'control-label']) !!}
-                    <select name="ubicacion">
+                    <select name="ubicacion" id="ubicacion">
                         @foreach($ubicaciones as $ubicacion)
                          <option value="{{ $ubicacion->id }}">{{ $ubicacion->nombre}} - {{ $ubicacion->estado}}</option>
                         @endforeach
@@ -125,6 +156,25 @@
                     @endif
                 </div>
             </div>
+            <div class="row" id="div_acceso">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('acceso', trans('quickadmin.users.fields.acceso').'*', ['class' => 'control-label']) !!}
+
+
+
+                    @foreach($ubicaciones as $ub)
+                    <select name="acceso" id="{{ $ub->id }}" class="options"> 
+                        @foreach($accesos[$ub->id] as $acceso)
+                            <option value="{{ $acceso->id }}">{{ $room->nombre_acceso}}</option>
+                        @endforeach
+                    </select>
+                    @endforeach
+
+
+
+
+                </div>
+            </div>            
             
         </div>
     </div>
