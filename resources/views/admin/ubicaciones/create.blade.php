@@ -1,21 +1,6 @@
 @extends('layouts.app')
 
-<script>
-    
-$('#nombre').keyup(function(){ 
 
-    var name = $('#nombre').val();
-
-    var ar = <?php echo '["' . implode('", "', $name) . '"]' ?>;
-    alert(name);
-    alert(ar);
-
-
-
-});
-
-
-</script>
 
 <?php var_dump($ubicaciones); ?>
 
@@ -34,7 +19,7 @@ $('#nombre').keyup(function(){
                     {!! Form::label('nombre', trans('quickadmin.ubicaciones.fields.nombre').'*', ['class' => 'control-label']) !!}
 
                     <input type="text" name="nombre" class="nombre" placeholder="Nombre para identificar la ubicación" id="nombre">
-                    
+
                     <p class="help-block">Nombre para identificar la ubicación</p>
                     @if($errors->has('nombre'))
                         <p class="help-block">
