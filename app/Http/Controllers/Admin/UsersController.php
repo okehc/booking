@@ -54,8 +54,6 @@ class UsersController extends Controller
         }
 
 
-        $accesos = DB::connection('odbc')->select('SELECT id, nombre_acceso, id_ubicacion FROM accesos') ;
-
         return view('admin.users.create', compact('roles'))->with('departamentos', $departamentos)->with('ubicaciones', $ubicaciones)->with('accesos', $accesos);
     }
 

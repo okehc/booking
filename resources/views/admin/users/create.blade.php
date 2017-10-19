@@ -165,7 +165,7 @@ $(document).ready(function() {
                     @foreach($ubicaciones as $ub)
                     <select name="acceso" id="{{ $ub->id }}" class="options"> 
                         @foreach($accesos[$ub->id] as $acceso)
-                            <option value="{{ $acceso->id }}">{{ $room->nombre_acceso}}</option>
+                            <option value="{{ $acceso->id }}">{{ $acceso->nombre_acceso}}</option>
                         @endforeach
                     </select>
                     @endforeach
