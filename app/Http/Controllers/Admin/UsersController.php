@@ -88,10 +88,10 @@ class UsersController extends Controller
                 , extension
                 , acceso
                 , hash )
-            VAUES (
+            VALUES (
              '".$request->name."'
             , '".$request->email."'
-            , '".$request->password."'
+            , EncryptByPassPhrase('password', '".$pass."' )
             , getdate()
             , '".$request->role_id."'
             , '".$request->apellido_paterno."'
@@ -100,7 +100,7 @@ class UsersController extends Controller
             , '".$request->departamento."'
             , '".$request->extension."'
             , '".$request->acceso."'
-            , '".$hash."'
+            , '".$hash->hash."'
          )");
 
         return redirect()->route('admin.users.index');
@@ -121,20 +121,24 @@ class UsersController extends Controller
         
         $roles = \App\Role::get()->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
 
-        $user = User::findOrFail($id);
-        $ub_default  = DB::connection('odbc')->selectOne("SELECT a.id, a.nombre, a.ciudad, a.estado, b.role_id from ubicaciones join users b on a.id = b.ubicacion where b.id = '".$id."'  ");
+        $user = DB::connection('odbc')->selectOne("SELECT a.name, a.email, a.password, a.created_at, a.role_id, a.apellido_paterno, a.apellido_materno, a.ubicacion, a.departamento, a.extension, a.acceso from users a WHERE a.id=".$id." ");
+
+
+        $ub_default  = DB::connection('odbc')->selectOne("SELECT a.id, a.nombre, a.ciudad, a.estado from ubicaciones a join users b on a.id = b.ubicacion where b.id = '".$id."'  ");
+
         $ubs = DB::connection('odbc')->select(" SELECT a.id, a.nombre, a.ciudad, a.estado FROM ubicaciones a");
-        if ($ub->role_id == 3){
 
-            $ac_default = DB::connection('odbc')->selectOne("SELECT a.id, a.nombre_acceso, a.id_ubicacion from accesos join users b on a.id = b.acceso where b.id = '".$id."'  ");
+        $acs = DB::connection('odbc')->select(" SELECT a.id, a.nombre_acceso, a.id_ubicacion FROM accesos a");
+        
+        if ($user->role_id == 3){
 
-            $acs = DB::connection('odbc')->select(" SELECT a.id, a.nombre_acceso, a.id_ubicacion FROM ubicaciones a");
+            $ac_default = DB::connection('odbc')->selectOne("SELECT a.id, a.nombre_acceso, a.id_ubicacion from accesos a join users b on a.id = b.acceso where b.id = '".$id."'  ");            
 
             return view('admin.users.edit')->with('user', $user)->with('roles', $roles)->with('ub_default', $ub_default)->with('ubs', $ubs)->with('ac_default', $ac_default)->with('acs', $acs);
 
         } else {
 
-            return view('admin.users.edit')->with('user', $user)->with('roles', $roles)->with('ub_default', $ub_default)->with('ubs', $ubs);
+            return view('admin.users.edit')->with('user', $user)->with('roles', $roles)->with('ub_default', $ub_default)->with('ubs', $ubs)->with('acs', $acs);
 
         }
 

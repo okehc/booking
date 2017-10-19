@@ -1,5 +1,50 @@
 @extends('layouts.app')
+@section('javascript')
+<script>
+$(document).ready(function() {
 
+    $('.options').hide();
+    $('#div_acceso').hide();
+    $('#role_id').change(function(){  
+
+        var role_val = $('#role_id').val();
+
+        if (role_val == 3){
+
+            var id_ub = $('#ubicacion').val();
+            $('.options').hide();
+            $('#' + id_ub).show();
+            $('#div_acceso').show();
+        } else {
+            $('#div_acceso').hide();
+            $('.options').hide();
+        }
+    });
+
+
+
+    $('#ubicacion').change(function(){
+        var role_val = $('#role_id').val();
+
+        if (role_val == 3){
+
+            var id_ub = $('#ubicacion').val();
+            $('.options').hide();
+            $('#' + id_ub).show();
+            $('#div_acceso').show();
+        } else {
+            $('#div_acceso').hide();
+            $('.options').hide();
+        }
+
+    });
+
+
+});
+
+
+</script>
+@endsection
 @section('content')
     <h3 class="page-title">@lang('quickadmin.users.title')</h3>
     
@@ -51,7 +96,15 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('ubicacion', trans('quickadmin.users.fields.ubicacion').'*', ['class' => 'control-label']) !!}
-                    {!! Form::number('ubicacion', old('ubicacion'), ['class' => 'form-control', 'placeholder' => 'Ubicación del usuario', 'required' => '']) !!}
+
+                    <select name="ubicacion" id="ubicacion">
+                        <option value="<?php echo $ub_default->id; ?>" DEFAULT>
+                            <?php echo $ub_default->nombre." - ".$ub_default->estado; ?>
+                        </option> 
+                        @foreach($ubs as $ubicacion)
+                         <option value="{{ $ubicacion->id }}">{{ $ubicacion->nombre}} - {{ $ubicacion->estado}}</option>
+                        @endforeach
+                    </select>                    
                     <p class="help-block">Ubicación del usuario</p>
                     @if($errors->has('ubicacion'))
                         <p class="help-block">
@@ -127,7 +180,7 @@
                     {!! Form::label('acceso', trans('quickadmin.users.fields.acceso').'*', ['class' => 'control-label']) !!}
 
 
-                    @foreach($ubicaciones as $ub)
+                    @foreach($ubs as $ub)
                     <select name="acceso" id="{{ $ub->id }}" class="options"> 
                         @foreach($accesos[$ub->id] as $acceso)
                             <option value="{{ $acceso->id }}">{{ $acceso->nombre_acceso}}</option>
