@@ -3,8 +3,18 @@
 <script>
 $(document).ready(function() {
 
-    $('.options').hide();
-    $('#div_acceso').hide();
+
+    var exists = $('#role_id').val();
+    if (exists == 3){
+            var id_ub = $('#ubicacion').val();
+            $('.options').hide();
+            $('#' + id_ub).show();
+            $('#div_acceso').show();
+    } else {
+            $('#div_acceso').hide();
+    }
+
+
     $('#role_id').change(function(){  
 
         var role_val = $('#role_id').val();
@@ -15,6 +25,7 @@ $(document).ready(function() {
             $('.options').hide();
             $('#' + id_ub).show();
             $('#div_acceso').show();
+            $('#selec').hide();
         } else {
             $('#div_acceso').hide();
             $('.options').hide();
@@ -184,7 +195,9 @@ $(document).ready(function() {
                     <select name="acceso" id="{{ $ub->id }}" class="options"> 
                         <?php 
                             if (isset($ac_default)) {
+                                echo "<div id='selec'>";
                                 echo "<option value='".$ac_default->id."' SELECTED>".$ac_default->nombre_acceso."</option>";
+                                echo "</div>";
                             }
                         ?>
 
