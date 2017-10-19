@@ -160,10 +160,42 @@ class UsersController extends Controller
         if (! Gate::allows('user_edit')) {
             return abort(401);
         }
+
         $user = User::findOrFail($id);
-        $user->update($request->all());
+        if ($request->password != '') {
 
+            $pass = $request->password;
+            $hash = DB::connection('odbc')->selectOne("select EncryptByPassPhrase('password', '".$pass."' ) as hash" );
 
+            $update = DB::connection('odbc')->insert("UPDATE users SET 
+                 name = '".$request->name."'
+                , email = '".$request->email."'
+                , password = EncryptByPassPhrase('password', '".$pass."' )
+                , updated_at = getdate()
+                , role_id = '".$request->role_id."'
+                , apellido_paterno = '".$request->apellido_paterno."'
+                , apellido_materno = '".$request->apellido_materno."'
+                , ubicacion = '".$request->ubicacion."'
+                , departamento = '".$request->departamento."'
+                , extension = '".$request->extension."'
+                , acceso = '".$request->acceso."'
+                , hash = '".$hash."'
+                WHERE id = ".$id." ");
+        } else {
+
+            $update = DB::connection('odbc')->insert("UPDATE users SET 
+                 name = '".$request->name."'
+                , email = '".$request->email."'
+                , updated_at = getdate()
+                , role_id = '".$request->role_id."'
+                , apellido_paterno = '".$request->apellido_paterno."'
+                , apellido_materno = '".$request->apellido_materno."'
+                , ubicacion = '".$request->ubicacion."'
+                , departamento = '".$request->departamento."'
+                , extension = '".$request->extension."'
+                , acceso = '".$request->acceso."'
+                WHERE id = ".$id." ");
+        }
 
         return redirect()->route('admin.users.index');
     }
