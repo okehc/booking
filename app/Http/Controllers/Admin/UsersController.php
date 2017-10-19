@@ -121,14 +121,17 @@ class UsersController extends Controller
         
         $roles = \App\Role::get()->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
 
-        $user = DB::connection('odbc')->selectOne("SELECT a.name, a.email, a.password, a.created_at, a.role_id, a.apellido_paterno, a.apellido_materno, a.ubicacion, a.departamento, a.extension, a.acceso from users a WHERE a.id=".$id." ");
+        $user = DB::connection('odbc')->selectOne("SELECT a.id, a.name, a.email, a.password, a.created_at, a.role_id, a.apellido_paterno, a.apellido_materno, a.ubicacion, a.departamento, a.extension, a.acceso from users a WHERE a.id=".$id." ");
 
 
         $ub_default  = DB::connection('odbc')->selectOne("SELECT a.id, a.nombre, a.ciudad, a.estado from ubicaciones a join users b on a.id = b.ubicacion where b.id = '".$id."'  ");
 
         $ubs = DB::connection('odbc')->select(" SELECT a.id, a.nombre, a.ciudad, a.estado FROM ubicaciones a");
 
-        $acs = DB::connection('odbc')->select(" SELECT a.id, a.nombre_acceso, a.id_ubicacion FROM accesos a");
+        foreach ($ubs as $ub ) {
+            $acs[$ub->id] = DB::connection('odbc')->select("SELECT a.id, a.nombre_acceso, a.id_ubicacion FROM accesos a WHERE a.id_ubicacion =".$ub->id." ") ;
+        }
+    
         
         if ($user->role_id == 3){
 

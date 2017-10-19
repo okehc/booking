@@ -182,7 +182,13 @@ $(document).ready(function() {
 
                     @foreach($ubs as $ub)
                     <select name="acceso" id="{{ $ub->id }}" class="options"> 
-                        @foreach($accesos[$ub->id] as $acceso)
+                        <?php 
+                            if (isset($ac_default)) {
+                                echo "<option value='".$ac_default->id."' SELECTED>".$ac_default->nombre_acceso."</option>";
+                            }
+                        ?>
+
+                        @foreach($acs[$ub->id] as $acceso)
                             <option value="{{ $acceso->id }}">{{ $acceso->nombre_acceso}}</option>
                         @endforeach
                     </select>
