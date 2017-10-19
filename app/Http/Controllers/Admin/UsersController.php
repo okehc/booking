@@ -124,6 +124,10 @@ class UsersController extends Controller
         $user = DB::connection('odbc')->selectOne("SELECT a.id, a.name, a.email, a.password, a.created_at, a.role_id, a.apellido_paterno, a.apellido_materno, a.ubicacion, a.departamento, a.extension, a.acceso from users a WHERE a.id=".$id." ");
 
 
+        $dep_default = DB::connection('odbc')->selectOne("SELECT a.id, a.departamento FROM departamentos a JOIN users b ON a.id = b.departamento WHERE b.id=".$id."");
+
+        $deps = DB::connection('odbc')->select("SELECT a.id, a.departamento FROM departamentos a");
+
         $ub_default  = DB::connection('odbc')->selectOne("SELECT a.id, a.nombre, a.ciudad, a.estado from ubicaciones a join users b on a.id = b.ubicacion where b.id = '".$id."'  ");
 
         $ubs = DB::connection('odbc')->select(" SELECT a.id, a.nombre, a.ciudad, a.estado FROM ubicaciones a");
@@ -141,7 +145,7 @@ class UsersController extends Controller
 
         } else {
 
-            return view('admin.users.edit')->with('user', $user)->with('roles', $roles)->with('ub_default', $ub_default)->with('ubs', $ubs)->with('acs', $acs);
+            return view('admin.users.edit')->with('user', $user)->with('roles', $roles)->with('ub_default', $ub_default)->with('ubs', $ubs)->with('acs', $acs)->with('dep_default', $dep_default)->with('deps', $deps);
 
         }
 

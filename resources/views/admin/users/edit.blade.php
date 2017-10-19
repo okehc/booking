@@ -127,7 +127,17 @@ $(document).ready(function() {
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('departamento', trans('quickadmin.users.fields.departamento').'*', ['class' => 'control-label']) !!}
-                    {!! Form::number('departamento', old('departamento'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+
+                    <select name="departamento" id="departamento">
+                        <option value="<?php echo $dep_default->id; ?>" SELECTED>
+                            <?php echo $dep_default->departamento; ?>
+                        </option>
+                        @foreach($deps as $dep)
+                         <option value="{{ $dep->id }}">{{ $dep->departamento}}</option>
+                        @endforeach
+
+                    </select>
+
                     <p class="help-block"></p>
                     @if($errors->has('departamento'))
                         <p class="help-block">
