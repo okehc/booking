@@ -25,6 +25,23 @@ $(document).ready(function() {
 
 
 
+    $('#ubicacion').change(function(){
+        var role_val = $('#role_id').val();
+
+        if (role_val == 3){
+
+            var id_ub = $('#ubicacion').val();
+            $('.options').hide();
+            $('#' + id_ub).show();
+            $('#div_acceso').show();
+        } else {
+            $('#div_acceso').hide();
+            $('.options').hide();
+        }
+
+    });
+
+
 });
 
 

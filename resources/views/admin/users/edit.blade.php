@@ -121,6 +121,25 @@
                     @endif
                 </div>
             </div>
+
+            <div class="row" id="div_acceso">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('acceso', trans('quickadmin.users.fields.acceso').'*', ['class' => 'control-label']) !!}
+
+
+                    @foreach($ubicaciones as $ub)
+                    <select name="acceso" id="{{ $ub->id }}" class="options"> 
+                        @foreach($accesos[$ub->id] as $acceso)
+                            <option value="{{ $acceso->id }}">{{ $acceso->nombre_acceso}}</option>
+                        @endforeach
+                    </select>
+                    @endforeach
+
+
+
+
+                </div>
+            </div>              
             
         </div>
     </div>

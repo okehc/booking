@@ -73,11 +73,35 @@ class UsersController extends Controller
         $email = $request->email;
         $hash = DB::connection('odbc')->selectOne("select EncryptByPassPhrase('password', '".$pass."' ) as hash" );
 
-        $user = User::create($request->all());
 
-        $id= DB::connection('odbc')->selectOne("SELECT id from users where email = '".$email."'  ");
 
-        DB::connection('odbc')->update('UPDATE users SET hash = '.$hash->hash.' WHERE id='.$id->id.' ');
+        $insert = DB::connection('odbc')->insert("INSERT INTO users (
+                 name
+                , email
+                , password
+                , created_at
+                , role_id
+                , apellido_paterno
+                , apellido_materno
+                , ubicacion
+                , departamento
+                , extension
+                , acceso
+                , hash )
+            VAUES (
+             '".$request->name."'
+            , '".$request->email."'
+            , '".$request->password."'
+            , getdate()
+            , '".$request->role_id."'
+            , '".$request->apellido_paterno."'
+            , '".$request->apellido_materno."'
+            , '".$request->ubicacion."'
+            , '".$request->departamento."'
+            , '".$request->extension."'
+            , '".$request->acceso."'
+            , '".$hash."'
+         )");
 
         return redirect()->route('admin.users.index');
     }
